@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\User;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -17,6 +18,31 @@ class AuthenticatedSessionController extends Controller
     public function create(): View
     {
         return view('auth.login');
+    }
+
+    public function postlogin(Request $request):RedirectResponse
+    {
+        $email = User::where('email', $request->email)->exists();
+
+        if(!$email){
+            return back()->with('gagal', 'Email belum terdaftar!');
+        }else{
+            if(Auth::attempt($request->only('email', 'password'))){
+                $user = Auth::user();
+    
+                return redirect($user->role . '/dashboard');
+            }
+            else {
+                return back()->with('gagal', 'Email atau Password salah!');
+            }
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('/login')->with('sukses', 'Berhasil logout.');
     }
 
     /**

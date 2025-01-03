@@ -29,22 +29,45 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        if($request->password !== $request->password_confirm){
+            return back()->with('gagal', 'Konfirmasi password tidak sesuai.');      
+        }
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required'],
+            // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $role = $this->cekEmail($request->email);
+        
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->role = $role;
+        $user->save();
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect('/login')->with('sukses', 'Register berhasil, Silahkan login.');
+    }
+
+    private function cekEmail($email)
+    {
+        if(strpos($email, '@admin.com') !== false)
+        {
+            return 'admin';
+        }
+        elseif(strpos($email, '@pimpinan.com') !== false)
+        {
+            return 'pimpinan';
+        }
+        else{
+            return 'staf';
+        }
     }
 }

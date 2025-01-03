@@ -1,16 +1,31 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MasterBarangController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\adminMiddleware;
+use App\Http\Middleware\pimpinanMiddleware;
+use App\Http\Middleware\stafMiddleware;
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
 
-Route::get('/master-barang', [MasterBarangController::class, 'index']);
-Route::post('/master-barang/store', [MasterBarangController::class, 'store']);
-Route::put('/master-barang/{encrypted_id}/update', [MasterBarangController::class, 'update']);
-Route::get('/master-barang/{encrypted_id}/delete', [MasterBarangController::class, 'destroy']);
+Route::get('/', [AuthenticatedSessionController::class, 'create']);
+Route::get('/login', [AuthenticatedSessionController::class, 'create']);
+Route::get('/logout', [AuthenticatedSessionController::class, 'logout']);
+Route::post('/postlogin', [AuthenticatedSessionController::class, 'postlogin']);
+Route::get('/register', [RegisteredUserController::class, 'create']);
+Route::post('/register/store', [RegisteredUserController::class, 'store']);
+
+Route::middleware(['auth', 'adminMiddleware'])->group(function(){
+    Route::get('/admin/dashboard', [DashboardController::class, 'index']);
+    Route::get('/admin/master-barang', [MasterBarangController::class, 'index']);
+    Route::post('/admin/master-barang/store', [MasterBarangController::class, 'store']);
+    Route::put('/admin/master-barang/{encrypted_id}/update', [MasterBarangController::class, 'update']);
+    Route::get('/admin/master-barang/{encrypted_id}/delete', [MasterBarangController::class, 'destroy']);
+});
+
 
 
 
