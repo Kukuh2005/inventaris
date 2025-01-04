@@ -25,12 +25,12 @@ class AuthenticatedSessionController extends Controller
         $email = User::where('email', $request->email)->exists();
 
         if(!$email){
-            return back()->with('gagal', 'Email belum terdaftar!');
+            return back()->with('gagal', 'Email ' . $request->email . ' belum terdaftar!');
         }else{
             if(Auth::attempt($request->only('email', 'password'))){
                 $user = Auth::user();
     
-                return redirect($user->role . '/dashboard');
+                return redirect($user->role . '/dashboard')->with('sukses', 'Berhasil login sebagai ' . $user->role);
             }
             else {
                 return back()->with('gagal', 'Email atau Password salah!');

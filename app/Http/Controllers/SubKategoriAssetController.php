@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SubKategoriAset;
+use App\Models\SubKategoriAsset;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SubKategoriAsetController extends Controller
+class SubkategoriAssetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class SubKategoriAsetController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(SubKategoriAset $subKategoriAset)
+    public function show(SubkategoriAsset $subkategoriAsset)
     {
         //
     }
@@ -43,7 +43,7 @@ class SubKategoriAsetController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SubKategoriAset $subKategoriAset)
+    public function edit(SubkategoriAsset $subkategoriAsset)
     {
         //
     }
@@ -51,7 +51,7 @@ class SubKategoriAsetController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SubKategoriAset $subKategoriAset)
+    public function update(Request $request, SubkategoriAsset $subkategoriAsset)
     {
         //
     }
@@ -59,7 +59,7 @@ class SubKategoriAsetController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SubKategoriAset $subKategoriAset)
+    public function destroy(SubkategoriAsset $subkategoriAsset)
     {
         //
     }

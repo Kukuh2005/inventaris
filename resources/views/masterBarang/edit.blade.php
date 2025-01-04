@@ -7,7 +7,7 @@
                     aria-label="Close"> <span aria-hidden="true">×</span> </button>
             </div>
             <div class="modal-body">
-                <form action="/master-barang/{{$item->encrypted_id}}/update" method="post">
+                <form action="/{{auth()->user()->role}}/master-barang/{{$item->encrypted_id}}/update" method="post">
                     @csrf
                     @method('PUT')
                     <div class="form-group">

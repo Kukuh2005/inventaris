@@ -6,7 +6,7 @@ var myChart = new Chart(statistics_chart, {
   type: 'line',
   data: {
     labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    datasets: [{
+    datAssets: [{
       label: 'Statistics',
       data: [640, 387, 530, 302, 430, 270, 488],
       borderWidth: 5,

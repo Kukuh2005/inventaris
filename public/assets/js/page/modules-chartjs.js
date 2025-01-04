@@ -5,7 +5,7 @@ var myChart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    datasets: [{
+    datAssets: [{
       label: 'Statistics',
       data: [460, 458, 330, 502, 430, 610, 488],
       borderWidth: 2,
@@ -48,7 +48,7 @@ var myChart = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    datasets: [{
+    datAssets: [{
       label: 'Statistics',
       data: [460, 458, 330, 502, 430, 610, 488],
       borderWidth: 2,
@@ -90,7 +90,7 @@ var ctx = document.getElementById("myChart3").getContext('2d');
 var myChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    datasets: [{
+    datAssets: [{
       data: [
         80,
         50,
@@ -105,7 +105,7 @@ var myChart = new Chart(ctx, {
         '#fc544b',
         '#6777ef',
       ],
-      label: 'Dataset 1'
+      label: 'DatAsset 1'
     }],
     labels: [
       'Black',
@@ -127,7 +127,7 @@ var ctx = document.getElementById("myChart4").getContext('2d');
 var myChart = new Chart(ctx, {
   type: 'pie',
   data: {
-    datasets: [{
+    datAssets: [{
       data: [
         80,
         50,
@@ -142,7 +142,7 @@ var myChart = new Chart(ctx, {
         '#fc544b',
         '#6777ef',
       ],
-      label: 'Dataset 1'
+      label: 'DatAsset 1'
     }],
     labels: [
       'Black',

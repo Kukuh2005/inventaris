@@ -53,7 +53,7 @@ var myChart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    datasets: [{
+    datAssets: [{
       label: 'Statistics',
       data: [460, 458, 330, 502, 430, 610, 488],
       borderWidth: 2,
@@ -110,7 +110,7 @@ var myChart = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    datasets: [{
+    datAssets: [{
       label: 'Statistics',
       data: [460, 458, 330, 502, 430, 610, 488],
       borderWidth: 2,
@@ -159,7 +159,7 @@ var myChart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    datasets: [{
+    datAssets: [{
       label: 'Google',
       data: [290, 358, 220, 402, 690, 510, 688],
       borderWidth: 2,

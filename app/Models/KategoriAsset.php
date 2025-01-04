@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class KategoriAset extends Model
+class KategoriAsset extends Model
 {
     //
 }

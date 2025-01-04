@@ -6,19 +6,15 @@
                     aria-label="Close"> <span aria-hidden="true">×</span> </button>
             </div>
             <div class="modal-body">
-                <form action="/{{auth()->user()->role}}/master-barang/store" method="post">
+                <form action="/{{auth()->user()->role}}/kategori-asset/store" method="post">
                     @csrf
                     <div class="form-group">
                       <label>Kode</label>
-                      <input type="text" class="form-control" name="kode">
+                      <input type="text" class="form-control" name="kode_kategori_asset">
                     </div>
                     <div class="form-group">
-                      <label>Nama</label>
-                      <input type="text" class="form-control" name="nama">
-                    </div>
-                    <div class="form-group">
-                      <label>Spesifikasi Teknis</label>
-                      <input type="text" class="form-control" name="spesifikasi_teknis">
+                      <label>Kategori Asset</label>
+                      <input type="text" class="form-control" name="kategori_asset">
                     </div>
                     <button type="submit" class="btn btn-primary float-right">Simpan</button>
                 </form>

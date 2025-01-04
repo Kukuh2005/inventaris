@@ -5,7 +5,7 @@ var myChart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: ["January", "February", "March", "April", "May", "June", "July", "August"],
-    datasets: [{
+    datAssets: [{
       label: 'Sales',
       data: [3200, 1800, 4305, 3022, 6310, 5120, 5880, 6154],
       borderWidth: 2,
@@ -69,7 +69,7 @@ var myChart = new Chart(balance_chart, {
   type: 'line',
   data: {
     labels: ['16-07-2018', '17-07-2018', '18-07-2018', '19-07-2018', '20-07-2018', '21-07-2018', '22-07-2018', '23-07-2018', '24-07-2018', '25-07-2018', '26-07-2018', '27-07-2018', '28-07-2018', '29-07-2018', '30-07-2018', '31-07-2018'],
-    datasets: [{
+    datAssets: [{
       label: 'Balance',
       data: [50, 61, 80, 50, 72, 52, 60, 41, 30, 45, 70, 40, 93, 63, 50, 62],
       backgroundColor: balance_chart_bg_color,
@@ -126,7 +126,7 @@ var myChart = new Chart(sales_chart, {
   type: 'line',
   data: {
     labels: ['16-07-2018', '17-07-2018', '18-07-2018', '19-07-2018', '20-07-2018', '21-07-2018', '22-07-2018', '23-07-2018', '24-07-2018', '25-07-2018', '26-07-2018', '27-07-2018', '28-07-2018', '29-07-2018', '30-07-2018', '31-07-2018'],
-    datasets: [{
+    datAssets: [{
       label: 'Sales',
       data: [70, 62, 44, 40, 21, 63, 82, 52, 50, 31, 70, 50, 91, 63, 51, 60],
       borderWidth: 2,

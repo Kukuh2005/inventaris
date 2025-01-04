@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MasterBarangController;
+use App\Http\Controllers\KategoriAssetController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\adminMiddleware;
 use App\Http\Middleware\pimpinanMiddleware;
@@ -20,10 +21,16 @@ Route::post('/register/store', [RegisteredUserController::class, 'store']);
 
 Route::middleware(['auth', 'adminMiddleware'])->group(function(){
     Route::get('/admin/dashboard', [DashboardController::class, 'index']);
+
     Route::get('/admin/master-barang', [MasterBarangController::class, 'index']);
     Route::post('/admin/master-barang/store', [MasterBarangController::class, 'store']);
     Route::put('/admin/master-barang/{encrypted_id}/update', [MasterBarangController::class, 'update']);
     Route::get('/admin/master-barang/{encrypted_id}/delete', [MasterBarangController::class, 'destroy']);
+
+    Route::get('/admin/kategori-asset', [KategoriAssetController::class, 'index']);
+    Route::post('/admin/kategori-asset/store', [KategoriAssetController::class, 'store']);
+    Route::put('/admin/kategori-asset/{encrypted_id}/update', [KategoriAssetController::class, 'update']);
+    Route::get('/admin/kategori-asset/{encrypted_id}/delete', [KategoriAssetController::class, 'destroy']);
 });
 
 
