@@ -16,7 +16,8 @@
                 '/' . auth()->user()->role . '/master-barang',
                 '/' . auth()->user()->role . '/kategori-asset',
                 '/' . auth()->user()->role . '/subkategori-asset',
-                '/' . auth()->user()->role . '/merek',
+                '/' . auth()->user()->role . '/merk',
+                '/' . auth()->user()->role . '/satuan',
                 '/' . auth()->user()->role . '/lokasi'
             ])) ? 'active' : '' ?>">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Master Data</span></a>
@@ -30,8 +31,8 @@
                     <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/subkategori-asset') ? 'active' : '' ?>">
                         <a class="nav-link" href="/{{auth()->user()->role}}/subkategori-asset">Subkategori Asset</a>
                     </li>
-                    <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/merek') ? 'active' : '' ?>">
-                        <a class="nav-link" href="/{{auth()->user()->role}}/merek">Merek</a>
+                    <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/merk') ? 'active' : '' ?>">
+                        <a class="nav-link" href="/{{auth()->user()->role}}/merk">merk</a>
                     </li>
                     <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/satuan') ? 'active' : '' ?>">
                         <a class="nav-link" href="/{{auth()->user()->role}}/satuan">Satuan</a>

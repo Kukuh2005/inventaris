@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Merk;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class MerkController extends Controller
 {
@@ -13,7 +14,12 @@ class MerkController extends Controller
      */
     public function index()
     {
-        //
+        $merk = Merk::all()->map(function($item){
+            $item->encrypted_id = Crypt::encryptString($item->id);
+            return $item;
+        });
+
+        return view('merk.index', compact('merk'));
     }
 
     /**
@@ -29,7 +35,12 @@ class MerkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $merk = new Merk;
+        $merk->merk = $request->merk;
+        $merk->keterangan = $request->keterangan;
+        $merk->save();
+
+        return back()->with('sukses', 'Berhasil Tambah Data');
     }
 
     /**
@@ -51,16 +62,29 @@ class MerkController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Merk $merk)
+    public function update(Request $request, $encrypt_id)
     {
-        //
+        $id = Crypt::decryptString($encrypt_id);
+
+        $merk = Merk::findOrFail($id);
+        $merk->merk = $request->merk;
+        $merk->keterangan = $request->keterangan;
+        $merk->update();
+
+        return back()->with('sukses', 'Berhasil Edit Data');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Merk $merk)
+    public function destroy($encrypt_id)
     {
-        //
+        $id = Crypt::decryptString($encrypt_id);
+
+        $merk = Merk::findorFail($id);
+
+        $merk->delete();
+
+        return back()->with('sukses', 'Berhasil Hapus Data');
     }
 }

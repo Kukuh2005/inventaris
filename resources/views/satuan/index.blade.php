@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Kategori Asset')
+@section('title', 'Satuan')
 
 @section('content')
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Kategori Asset</h1>
+            <h1>Satuan</h1>
         </div>
 
         <div class="section-body">
             <div class="card">
                 <div class="card-header">
-                    <h4>Data Kategori Asset</h4>
+                    <h4>Data Satuan</h4>
                     <div class="card-header-form">
                         <button type="button" class="btn btn-success mb-2 float-right" data-toggle="modal"data-target="#form-tambah">Tambah</button>
                     </div>
@@ -22,17 +22,15 @@
                         <thead>
                             <tr>
                                 <th scope="col">No.</th>
-                                <th scope="col">Kode</th>
-                                <th scope="col">Nama</th>
+                                <th scope="col">Satuan</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($kategoriAsset as $item)
+                            @foreach($satuan as $item)
                             <tr>
                                 <th scope="row">{{$loop->iteration}}</th>
-                                <td>{{$item->kode_kategori_asset}}</td>
-                                <td>{{$item->kategori_asset}}</td>
+                                <td>{{$item->satuan}}</td>
                                 <td>
                                     <button class="btn btn-sm btn-warning" data-toggle="modal"
                                         data-target="#edit{{$item->encrypted_id}}">Edit</button>
@@ -47,7 +45,7 @@
         </div>
     </section>
 </div>
-@include('kategoriAsset.delete')
-@include('kategoriAsset.form')
-@include('kategoriAsset.edit')
+@include('satuan.delete')
+@include('satuan.form')
+@include('satuan.edit')
 @endsection

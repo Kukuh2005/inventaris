@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Satuan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class SatuanController extends Controller
 {
@@ -13,7 +14,12 @@ class SatuanController extends Controller
      */
     public function index()
     {
-        //
+        $satuan = Satuan::all()->map(function($item){
+            $item->encrypted_id = Crypt::encryptString($item->id);
+            return $item;
+        });
+
+        return view('satuan.index', compact('satuan'));
     }
 
     /**
@@ -29,7 +35,11 @@ class SatuanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $satuan = new Satuan;
+        $satuan->satuan = $request->satuan;
+        $satuan->save();
+
+        return back()->with('sukses', 'Berhasil Tambah Data');
     }
 
     /**
@@ -51,16 +61,29 @@ class SatuanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Satuan $satuan)
+    public function update(Request $request, $encrypted_id)
     {
-        //
-    }
+        $id = Crypt::decryptString($encrypted_id);
 
+        $satuan = Satuan::findOrFail($id);
+        $satuan->satuan = $request->satuan;
+        $satuan->update();
+
+        return back()->with('sukses', 'Berhasil Edit Data');
+    }
+    
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Satuan $satuan)
+    public function destroy($encrypted_id)
     {
+        $id = Crypt::decryptString($encrypted_id);
+    
+        $satuan = Satuan::findOrFail($id);
+
+        $satuan->delete();
+    
+        return back()->with('sukses', 'Berhasil Hapus Data');
         //
     }
 }

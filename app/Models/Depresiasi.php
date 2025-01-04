@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Depresiasi extends Model
 {
-    protected $fillable = ['lama_depresiasi', 'keterangan'];
+    protected $fillable = [
+        'id',
+        'lama_depresiasi',
+        'keterangan',
+    ];
 }
+

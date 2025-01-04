@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lokasi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class LokasiController extends Controller
 {
@@ -13,7 +14,12 @@ class LokasiController extends Controller
      */
     public function index()
     {
-        //
+        $lokasi = Lokasi::all()->map(function($item){
+            $item->encrypted_id = Crypt::encryptString($item->id);
+            return $item;
+        });
+
+        return view('lokasi.index', compact('lokasi'));
     }
 
     /**
@@ -29,7 +35,13 @@ class LokasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lokasi = new Lokasi;
+        $lokasi->kode_lokasi = $request->kode_lokasi;
+        $lokasi->nama_lokasi = $request->nama_lokasi;
+        $lokasi->keterangan = $request->keterangan;
+        $lokasi->save();
+        
+        return back()->with('sukses', 'Berhasil Tambah Data');
     }
 
     /**
@@ -51,16 +63,29 @@ class LokasiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Lokasi $lokasi)
+    public function update(Request $request, $encrypted_id)
     {
-        //
+        $id = Crypt::decryptString($encrypted_id);
+        
+        $lokasi = Lokasi::findOrFail($id);
+        $lokasi->nama_lokasi = $request->nama_lokasi;
+        $lokasi->keterangan = $request->keterangan;
+        $lokasi->update();
+
+        return back()->with('sukses', 'Berhasil Edit Data');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Lokasi $lokasi)
+    public function destroy($encrypted_id)
     {
-        //
+        $id = Crypt::decryptString($encrypted_id);
+
+        $lokasi = Lokasi::findOrFail($id);
+
+        $lokasi->delete();
+
+        return back()->with('sukses', 'Berhasil Hapus Data');
     }
 }

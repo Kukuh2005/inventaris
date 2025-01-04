@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Kategori Asset')
+@section('title', 'Lokasi')
 
 @section('content')
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Kategori Asset</h1>
+            <h1>Lokasi</h1>
         </div>
 
         <div class="section-body">
             <div class="card">
                 <div class="card-header">
-                    <h4>Data Kategori Asset</h4>
+                    <h4>Data Lokasi</h4>
                     <div class="card-header-form">
                         <button type="button" class="btn btn-success mb-2 float-right" data-toggle="modal"data-target="#form-tambah">Tambah</button>
                     </div>
@@ -23,16 +23,18 @@
                             <tr>
                                 <th scope="col">No.</th>
                                 <th scope="col">Kode</th>
-                                <th scope="col">Nama</th>
+                                <th scope="col">Nama Lokasi</th>
+                                <th scope="col">Keterangan</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($kategoriAsset as $item)
+                            @foreach($lokasi as $item)
                             <tr>
                                 <th scope="row">{{$loop->iteration}}</th>
-                                <td>{{$item->kode_kategori_asset}}</td>
-                                <td>{{$item->kategori_asset}}</td>
+                                <td>{{$item->kode_lokasi}}</td>
+                                <td>{{$item->nama_lokasi}}</td>
+                                <td>{{$item->keterangan}}</td>
                                 <td>
                                     <button class="btn btn-sm btn-warning" data-toggle="modal"
                                         data-target="#edit{{$item->encrypted_id}}">Edit</button>
@@ -47,7 +49,7 @@
         </div>
     </section>
 </div>
-@include('kategoriAsset.delete')
-@include('kategoriAsset.form')
-@include('kategoriAsset.edit')
+@include('lokasi.delete')
+@include('lokasi.form')
+@include('lokasi.edit')
 @endsection

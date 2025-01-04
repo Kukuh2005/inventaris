@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="data-table">
                         <thead>
                             <tr>
                                 <th scope="col">No.</th>
@@ -42,9 +42,6 @@
                                 </td>
                             </tr>
                             @endforeach
-                            @if($masterBarang->count() == 0)
-                            <td class="bg-white font-weight-bold text-center" colspan="5">Data Kosong</td>
-                            @endif
                         </tbody>
                     </table>
                 </div>

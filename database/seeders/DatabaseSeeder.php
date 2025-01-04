@@ -2,9 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Lokasi;
+use App\Models\KategoriAsset;
+use App\Models\SubKategoriAsset;
+use App\Models\Merk;
+use App\Models\MasterBarang;
+use App\Models\Satuan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +17,106 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Seeder untuk tabel lokasi
+        Lokasi::create([
+            'kode_lokasi' => 'LOC01',
+            'nama_lokasi' => 'Gudang Utama',
+            'keterangan' => 'Lokasi penyimpanan utama',
+        ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        Lokasi::create([
+            'kode_lokasi' => 'LOC02',
+            'nama_lokasi' => 'Ruang IT',
+            'keterangan' => 'Penyimpanan perangkat IT',
+        ]);
+
+        Lokasi::create([
+            'kode_lokasi' => 'LOC03',
+            'nama_lokasi' => 'Kantor Depan',
+            'keterangan' => 'Lokasi kantor depan untuk tamu',
+        ]);
+
+        // Seeder untuk tabel kategori_asset
+        KategoriAsset::create([
+            'kode_kategori_asset' => 'KA01',
+            'kategori_asset' => 'Peralatan Kantor',
+        ]);
+
+        KategoriAsset::create([
+            'kode_kategori_asset' => 'KA02',
+            'kategori_asset' => 'Peralatan Elektronik',
+        ]);
+
+        KategoriAsset::create([
+            'kode_kategori_asset' => 'KA03',
+            'kategori_asset' => 'Furnitur',
+        ]);
+
+        // Seeder untuk tabel subkategori_asset
+        SubKategoriAsset::create([
+            'id_kategori_asset' => 1,
+            'kode_sub_kategori_asset' => 'SK01',
+            'sub_kategori_asset' => 'Meja dan Kursi',
+        ]);
+
+        SubKategoriAsset::create([
+            'id_kategori_asset' => 2,
+            'kode_sub_kategori_asset' => 'SK02',
+            'sub_kategori_asset' => 'Komputer dan Laptop',
+        ]);
+
+        SubKategoriAsset::create([
+            'id_kategori_asset' => 3,
+            'kode_sub_kategori_asset' => 'SK03',
+            'sub_kategori_asset' => 'Lemari Arsip',
+        ]);
+
+        // Seeder untuk tabel merk
+        Merk::create([
+            'merk' => 'Samsung',
+            'keterangan' => 'Merk untuk elektronik',
+        ]);
+
+        Merk::create([
+            'merk' => 'IKEA',
+            'keterangan' => 'Merk untuk furnitur',
+        ]);
+
+        Merk::create([
+            'merk' => 'Logitech',
+            'keterangan' => 'Merk untuk perangkat IT',
+        ]);
+
+        // Seeder untuk tabel satuan
+        Satuan::create([
+            'satuan' => 'Unit',
+        ]);
+
+        Satuan::create([
+            'satuan' => 'Pcs',
+        ]);
+
+        Satuan::create([
+            'satuan' => 'Set',
+        ]);
+
+        // Seeder untuk tabel master_barang
+        MasterBarang::create([
+            'kode_barang' => 'BRG01',
+            'nama_barang' => 'Meja Kantor',
+            'spesifikasi_teknis' => 'Kayu Jati, 120x60 cm',
+        ]);
+
+        MasterBarang::create([
+            'kode_barang' => 'BRG02',
+            'nama_barang' => 'Laptop Dell XPS',
+            'spesifikasi_teknis' => 'Core i7, 16GB RAM, SSD 512GB',
+        ]);
+
+        MasterBarang::create([
+            'kode_barang' => 'BRG03',
+            'nama_barang' => 'Lemari Arsip',
+            'spesifikasi_teknis' => 'Besi, 180x90x45 cm',
         ]);
     }
 }
