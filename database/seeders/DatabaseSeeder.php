@@ -9,6 +9,8 @@ use App\Models\SubKategoriAsset;
 use App\Models\Merk;
 use App\Models\MasterBarang;
 use App\Models\Satuan;
+use App\Models\Distributor;
+use App\Models\Depresiasi;
 
 class DatabaseSeeder extends Seeder
 {
@@ -117,6 +119,29 @@ class DatabaseSeeder extends Seeder
             'kode_barang' => 'BRG03',
             'nama_barang' => 'Lemari Arsip',
             'spesifikasi_teknis' => 'Besi, 180x90x45 cm',
+        ]);
+
+        Distributor::create([
+            'nama_distributor' => 'Dani',
+            'alamat' => 'Buduran',
+            'no_telp' => '08773645372819',
+            'email' => 'dani@gmail.com',
+            'keterangan' => 'elektronik',
+        ]);
+
+        Depresiasi::create([
+            'lama_depresiasi' => 1,
+            'keterangan' => 'elektronik',
+        ]);
+
+        Depresiasi::create([
+            'lama_depresiasi' => 2,
+            'keterangan' => 'elektronik',
+        ]);
+
+        Depresiasi::create([
+            'lama_depresiasi' => 3,
+            'keterangan' => 'elektronik',
         ]);
     }
 }

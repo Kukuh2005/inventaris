@@ -14,6 +14,9 @@ use App\Http\Controllers\SubKategoriAssetController;
 use App\Http\Controllers\MerkController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\LokasiController;
+use App\Http\Controllers\DistributorController;
+use App\Http\Controllers\PengadaanController;
+use App\Http\Controllers\DepresiasiController;
 
 
 Route::get('/', [AuthenticatedSessionController::class, 'create']);
@@ -55,6 +58,21 @@ Route::middleware(['auth', 'adminMiddleware'])->group(function(){
     Route::post('/admin/lokasi/store', [LokasiController::class, 'store']);
     Route::put('/admin/lokasi/{encrypted_id}/update', [LokasiController::class, 'update']);
     Route::get('/admin/lokasi/{encrypted_id}/delete', [LokasiController::class, 'destroy']);
+
+    Route::get('/admin/distributor', [DistributorController::class, 'index']);
+    Route::post('/admin/distributor/store', [DistributorController::class, 'store']);
+    Route::put('/admin/distributor/{encrypted_id}/update', [DistributorController::class, 'update']);
+    Route::get('/admin/distributor/{encrypted_id}/delete', [DistributorController::class, 'destroy']);
+
+    Route::get('/admin/pengadaan', [PengadaanController::class, 'index']);
+    Route::post('/admin/pengadaan/store', [PengadaanController::class, 'store']);
+    Route::put('/admin/pengadaan/{encrypted_id}/update', [PengadaanController::class, 'update']);
+    Route::get('/admin/pengadaan/{encrypted_id}/delete', [PengadaanController::class, 'destroy']);
+
+    Route::get('/admin/depresiasi', [DepresiasiController::class, 'index']);
+    Route::post('/admin/depresiasi/store', [DepresiasiController::class, 'store']);
+    Route::put('/admin/depresiasi/{encrypted_id}/update', [DepresiasiController::class, 'update']);
+    Route::get('/admin/depresiasi/{encrypted_id}/delete', [DepresiasiController::class, 'destroy']);
 });
 
 

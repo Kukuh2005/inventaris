@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('tahun_produksi', 5);
             $table->date('tgl_pengadaan');
             $table->integer('harga_barang');
+            $table->integer('jumlah_barang');
             $table->integer('nilai_barang');
             $table->enum('fb', ['0', '1']);
             $table->string('keterangan', 50)->nullable();

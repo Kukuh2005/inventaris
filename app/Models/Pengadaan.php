@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\MasterBarang;
+use App\Models\Distributor;
 
 class Pengadaan extends Model
 {
+    
     protected $fillable = [
-        'id',
         'id_master_barang',
         'id_depresiasi',
         'id_merk',
@@ -20,9 +22,18 @@ class Pengadaan extends Model
         'tahun_produksi',
         'tgl_pengadaan',
         'harga_barang',
+        'jumlah_barang',
         'nilai_barang',
         'fb',
         'keterangan',
     ];
+
+    public function masterBarang(){
+        return $this->belongsTo(MasterBarang::class, 'id_master_barang');
+    }
+
+    public function distributor(){
+        return $this->belongsTo(Distributor::class, 'id_distributor');
+    }
 }
 

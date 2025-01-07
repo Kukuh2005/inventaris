@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class MutasiLokasi extends Model
 {
     protected $fillable = [
-        'id',
         'id_lokasi',
         'id_pengadaan',
         'flag_lokasi',

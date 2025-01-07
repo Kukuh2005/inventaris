@@ -8,7 +8,6 @@ use App\Models\KategoriAsset;
 class SubKategoriAsset extends Model
 {
     protected $fillable = [
-        'id',
         'id_kategori_asset',
         'kode_sub_kategori_asset',
         'sub_kategori_asset',

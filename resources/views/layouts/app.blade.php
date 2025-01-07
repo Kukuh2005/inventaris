@@ -9,6 +9,7 @@
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{asset('assets/modules/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/modules/fontawesome/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.css')}}">
 
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{asset('assets/modules/datatables/datatables.min.css')}}">
@@ -87,6 +88,8 @@
         <!-- Template JS File -->
         <script src="{{asset('assets/js/scripts.js')}}"></script>
         <script src="{{asset('assets/js/custom.js')}}"></script>
+
+        @stack('script')
 
         <script>
             $(document).ready(function(){
