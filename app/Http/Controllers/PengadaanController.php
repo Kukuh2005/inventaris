@@ -79,16 +79,42 @@ class PengadaanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kode_pengadaan' => 'required',
-            'no_invoice' => 'required',
+            'id_master_barang' => 'required|integer',
+            'id_depresiasi' => 'required|integer',
+            'id_merk' => 'required|integer',
+            'id_satuan' => 'required|integer',
+            'id_sub_kategori_asset' => 'required|integer',
+            'id_distributor' => 'required|integer',
+            'kode_pengadaan' => 'required|string|max:255',
+            'no_invoice' => 'required|string|max:255',
+            'no_seri_barang' => 'nullable|string|max:255',
+            'tahun_produksi' => 'required|integer|min:1900|max:' . date('Y'),
+            'tgl_pengadaan' => 'required|date',
+            'harga_barang' => 'required|numeric|min:0',
             'jumlah_barang' => 'required|integer|min:1',
-            // validasi lainnya
+            'fb' => 'required|in:0,1',
+            'keterangan' => 'nullable|string',
         ]);
-
+        
         $pengadaan = new Pengadaan;
-        $pengadaan->fill($request->all());
+        $pengadaan->id_master_barang = $request->id_master_barang;
+        $pengadaan->id_depresiasi = $request->id_depresiasi;
+        $pengadaan->id_merk = $request->id_merk;
+        $pengadaan->id_satuan = $request->id_satuan;
+        $pengadaan->id_sub_kategori_asset = $request->id_sub_kategori_asset;
+        $pengadaan->id_distributor = $request->id_distributor;
+        $pengadaan->kode_pengadaan = $this->generateKode();
+        $pengadaan->no_invoice = $request->no_invoice;
+        $pengadaan->no_seri_barang = $request->no_seri_barang;
+        $pengadaan->tahun_produksi = $request->tahun_produksi;
+        $pengadaan->tgl_pengadaan = $request->tgl_pengadaan;
+        $pengadaan->harga_barang = $request->harga_barang;
+        $pengadaan->jumlah_barang = $request->jumlah_barang;
+        $pengadaan->nilai_barang = $request->jumlah_barang * $request->harga_barang;
+        $pengadaan->fb = $request->fb;
+        $pengadaan->keterangan = $request->keterangan;
         $pengadaan->save();
-
+        
         return back()->with('sukses', 'Berhasil Tambah Data');
     }
 
@@ -107,20 +133,44 @@ class PengadaanController extends Controller
     {
         //
     }
-
+    
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pengadaan $pengadaan)
+    public function update(Request $request, $encrypted_id)
     {
-        //
+        $id = Crypt::decryptString($encrypted_id);
+        
+        $pengadaan = Pengadaan::findOrFail($id);
+        $pengadaan->id_master_barang = $request->id_master_barang;
+        $pengadaan->id_depresiasi = $request->id_depresiasi;
+        $pengadaan->id_merk = $request->id_merk;
+        $pengadaan->id_satuan = $request->id_satuan;
+        $pengadaan->id_sub_kategori_asset = $request->id_sub_kategori_asset;
+        $pengadaan->id_distributor = $request->id_distributor;
+        $pengadaan->no_invoice = $request->no_invoice;
+        $pengadaan->no_seri_barang = $request->no_seri_barang;
+        $pengadaan->tahun_produksi = $request->tahun_produksi;
+        $pengadaan->tgl_pengadaan = $request->tgl_pengadaan;
+        $pengadaan->harga_barang = $request->harga_barang;
+        $pengadaan->jumlah_barang = $request->jumlah_barang;
+        $pengadaan->nilai_barang = $request->jumlah_barang * $request->harga_barang;
+        $pengadaan->fb = $request->fb;
+        $pengadaan->keterangan = $request->keterangan;
+        $pengadaan->update();
+
+        return back()->with('sukses', 'Berhasil Edit Data');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pengadaan $pengadaan)
+    public function destroy($encrypted_id)
     {
-        //
+        $id = Crypt::decryptString($encrypted_id);
+
+        $pengadaan = Pengadaan::findOrFail($id)->delete();
+
+        return back()->with('sukses', 'Berhasil Hapus Data');
     }
 }

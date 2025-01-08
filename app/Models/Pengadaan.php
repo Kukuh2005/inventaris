@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\MasterBarang;
 use App\Models\Distributor;
+use App\Models\Depresiasi;
+use App\Models\Merk;
+use App\Models\Satuan;
+use App\Models\SubKategoriAsset;
 
 class Pengadaan extends Model
 {
@@ -34,6 +38,22 @@ class Pengadaan extends Model
 
     public function distributor(){
         return $this->belongsTo(Distributor::class, 'id_distributor');
+    }
+
+    public function merk(){
+        return $this->belongsTo(Merk::class, 'id_merk');
+    }
+
+    public function subKategoriAsset(){
+        return $this->belongsTo(SubKategoriAsset::class, 'id_sub_kategori_asset');
+    }
+
+    public function satuan(){
+        return $this->belongsTo(Satuan::class, 'id_satuan');
+    }
+
+    public function depresiasi(){
+        return $this->belongsTo(Depresiasi::class, 'id_depresiasi');
     }
 }
 

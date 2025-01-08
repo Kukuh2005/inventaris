@@ -16,7 +16,7 @@
                     <!-- Input Kode Pengadaan -->
                     <div class="form-group">
                         <label>Kode Pengadaan</label>
-                        <input type="text" class="form-control" name="kode_pengadaan" value="{{ $item->kode_pengadaan }}" readonly>
+                        <input type="text" class="form-control" name="kode_pengadaan" value="{{ $item->kode_pengadaan }}" disabled>
                     </div>
 
                     <div class="row">
@@ -57,19 +57,19 @@
                         <!-- Input Jumlah Barang -->
                         <div class="form-group col-md-4">
                             <label>Jumlah Barang</label>
-                            <input type="number" class="form-control" id="jumlah{{$item->id}}" oninput="HitungNilaiEdit({{$item->id}})" value="{{ $item->jumlah_barang }}">
+                            <input type="number" class="form-control" id="jumlah{{$item->id}}" name="jumlah_barang" oninput="HitungNilaiEdit({{$item->id}})" value="{{ $item->jumlah_barang }}">
                         </div>
 
                         <!-- Input Nilai Barang -->
                         <div class="form-group col-md-4">
                             <label>Nilai Barang</label>
-                            <input type="number" class="form-control" id="nilai{{$item->id}}" name="nilai_barang" value="{{ $item->nilai_barang }}" readonly>
+                            <input type="number" class="form-control" id="nilai{{$item->id}}" name="nilai_barang" value="{{ $item->nilai_barang }}" disabled>
                         </div>
                     </div>
 
                     <div class="row">
                         <!-- Pilihan Master Barang -->
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label>Barang</label>
                             <select name="id_master_barang" class="form-control">
                                 <option value="">Pilih Barang...</option>
@@ -81,8 +81,18 @@
                             </select>
                         </div>
 
+                        <!-- Pilihan Kondisi -->
+                        <div class="form-group col-md-4">
+                            <label>Kondisi</label>
+                            <select name="fb" class="form-control">
+                                <option value="">Pilih kondisi...</option>
+                                <option value="0" {{$item->fb == 0 ? 'selected' : ''}}>Baru</option>
+                                <option value="1" {{$item->fb == 1 ? 'selected' : ''}}>Bekas</option>
+                            </select>
+                        </div>
+
                         <!-- Pilihan Depresiasi -->
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label>Depresiasi</label>
                             <select name="id_depresiasi" class="form-control">
                                 <option value="">Pilih Depresiasi...</option>

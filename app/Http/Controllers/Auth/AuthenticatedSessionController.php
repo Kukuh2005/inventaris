@@ -20,6 +20,10 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
+    public function landing(){
+        return view('landing');
+    }
+
     public function postlogin(Request $request):RedirectResponse
     {
         $email = User::where('email', $request->email)->exists();

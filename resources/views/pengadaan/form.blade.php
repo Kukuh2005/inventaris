@@ -14,7 +14,7 @@
                     <!-- Input Kode Pengadaan -->
                     <div class="form-group">
                         <label>Kode Pengadaan</label>
-                        <input type="text" class="form-control" name="kode_pengadaan" value="{{$kode}}" readonly>
+                        <input type="text" class="form-control" name="kode_pengadaan" value="{{$kode}}" disabled>
                     </div>
 
                     <div class="row">
@@ -61,13 +61,13 @@
                         <!-- Input Nilai Barang -->
                         <div class="form-group col-md-4">
                             <label>Nilai Barang</label>
-                            <input type="number" class="form-control" id="nilai" name="nilai_barang" value="0" readonly>
+                            <input type="number" class="form-control" id="nilai" name="nilai_barang" value="0" disabled>
                         </div>
                     </div>
 
                     <div class="row">
                         <!-- Pilihan Master Barang -->
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label>Barang</label>
                             <select name="id_master_barang" class="form-control">
                                 <option value="">Pilih Barang...</option>
@@ -77,8 +77,18 @@
                             </select>
                         </div>
 
+                        <!-- Pilihan Kondisi -->
+                        <div class="form-group col-md-4">
+                            <label>Kondisi</label>
+                            <select name="fb" class="form-control">
+                                <option value="">Pilih Kondisi...</option>
+                                <option value="0">Baru</option>
+                                <option value="1">Bekas</option>
+                            </select>
+                        </div>
+
                         <!-- Pilihan Depresiasi -->
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label>Depresiasi</label>
                             <select name="id_depresiasi" class="form-control">
                                 <option value="">Pilih Depresiasi...</option>

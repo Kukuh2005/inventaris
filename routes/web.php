@@ -19,7 +19,7 @@ use App\Http\Controllers\PengadaanController;
 use App\Http\Controllers\DepresiasiController;
 
 
-Route::get('/', [AuthenticatedSessionController::class, 'create']);
+Route::get('/', [AuthenticatedSessionController::class, 'landing']);
 Route::get('/login', [AuthenticatedSessionController::class, 'create']);
 Route::get('/logout', [AuthenticatedSessionController::class, 'logout']);
 Route::post('/postlogin', [AuthenticatedSessionController::class, 'postlogin']);
