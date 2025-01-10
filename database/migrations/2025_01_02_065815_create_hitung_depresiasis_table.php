@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('id_pengadaan');
             $table->date('tgl_hitung_depresiasi');
-            $table->string('bulan', 10);
+            $table->integer('bulan');
             $table->integer('durasi');
             $table->integer('nilai_barang');
             $table->timestamps();

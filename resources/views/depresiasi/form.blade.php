@@ -9,7 +9,7 @@
                 <form action="/{{auth()->user()->role}}/depresiasi/store" method="post">
                     @csrf
                     <div class="form-group">
-                      <label>Lama Depresiasi(Tahun)</label>
+                      <label>Lama Depresiasi (Tahun)</label>
                       <input type="number" class="form-control" name="lama_depresiasi" min="0">
                     </div>
                     <div class="form-group">

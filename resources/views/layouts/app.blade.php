@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{asset('assets/modules/datatables/datatables.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('assets/modules/simple-weather/jquery.simpleWeather.min.css')}}"> -->
+    <!-- <link rel="stylesheet" href="{{asset('assets/modules/summernote/summernote-bs4.css')}}"> -->
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
@@ -68,14 +70,13 @@
         <script src="{{asset('assets/js/stisla.js')}}"></script>
 
         <!-- JS Libraies -->
-         
-        <script src="{{asset('assets/modules/simple-weather/jquery.simpleWeather.min.js')}}"></script>
+        <!-- <script src="{{asset('assets/modules/simple-weather/jquery.simpleWeather.min.js')}}"></script> -->
         <script src="{{asset('assets/modules/chart.min.js')}}"></script>
-        <script src="{{asset('assets/modules/jqvmap/dist/jquery.vmap.min.js')}}"></script>
-        <script src="{{asset('assets/modules/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
-        <script src="{{asset('assets/modules/summernote/summernote-bs4.js')}}"></script>
-        <script src="{{asset('assets/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
-        <script src="{{asset('assets/modules/jquery-ui/jquery-ui.min.js')}}"></script>
+        <!-- <script src="{{asset('assets/modules/jqvmap/dist/jquery.vmap.min.js')}}"></script> -->
+        <!-- <script src="{{asset('assets/modules/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script> -->
+        <!-- <script src="{{asset('assets/modules/summernote/summernote-bs4.js')}}"></script> -->
+        <!-- <script src="{{asset('assets/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script> -->
+        <!-- <script src="{{asset('assets/modules/jquery-ui/jquery-ui.min.js')}}"></script> -->
 
         <!-- Page Specific JS File -->
         <script src="{{asset('assets/js/page/index-0.js')}}"></script>

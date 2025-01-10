@@ -11,7 +11,7 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                      <label>Lama Depresiasi(Tahun)</label>
+                      <label>Lama Depresiasi (Tahun)</label>
                       <input type="number" class="form-control" name="lama_depresiasi" value="{{$item->lama_depresiasi}}" min="0">
                     </div>
                     <div class="form-group">

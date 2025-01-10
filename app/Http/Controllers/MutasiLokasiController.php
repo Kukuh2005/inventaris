@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\MutasiLokasi;
+use App\Models\Pengadaan;
+use App\Models\Lokasi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class MutasiLokasiController extends Controller
 {
@@ -13,7 +16,14 @@ class MutasiLokasiController extends Controller
      */
     public function index()
     {
-        //
+        $mutasi_lokasi = MutasiLokasi::all()->map(function($item){
+            $item->encrypted_id = Crypt::encryptString($item->id);
+            return $item;
+        });
+        $pengadaan = Pengadaan::all();
+        $lokasi = Lokasi::all();
+
+        return view('mutasiLokasi.index', compact('mutasi_lokasi', 'pengadaan', 'lokasi'));
     }
 
     /**
@@ -29,7 +39,15 @@ class MutasiLokasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $mutasi_lokasi = new MutasiLokasi;
+        $mutasi_lokasi->id_pengadaan = $request->id_pengadaan;
+        $mutasi_lokasi->id_lokasi = $request->id_lokasi;
+        $mutasi_lokasi->tgl_mutasi = $request->tgl_mutasi;
+        $mutasi_lokasi->flag_lokasi = $request->flag_lokasi;
+        $mutasi_lokasi->flag_pindah = $request->flag_pindah;
+        $mutasi_lokasi->save();
+        
+        return back()->with('sukses', 'Berhasil Tambah Data');
     }
 
     /**
@@ -51,16 +69,26 @@ class MutasiLokasiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, MutasiLokasi $mutasiLokasi)
+    public function update(Request $request, $encrypted_id)
     {
-        //
+        $id = Crypt::decryptString($encrypted_id);
+
+        $mutasi_lokasi = MutasiLokasi::findOrFail($id);
+        $mutasi_lokasi->id_pengadaan = $request->id_pengadaan;
+        $mutasi_lokasi->id_lokasi = $request->id_lokasi;
+        $mutasi_lokasi->tgl_mutasi = $request->tgl_mutasi;
+        $mutasi_lokasi->flag_lokasi = $request->flag_lokasi;
+        $mutasi_lokasi->flag_pindah = $request->flag_pindah;
+        $mutasi_lokasi->update();        
+
+        return back()->with('sukses', 'Berhasil Edit Data');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MutasiLokasi $mutasiLokasi)
+    public function destroy()
     {
-        //
+
     }
 }

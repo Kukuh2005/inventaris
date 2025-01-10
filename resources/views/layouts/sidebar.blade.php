@@ -18,7 +18,8 @@
                 '/' . auth()->user()->role . '/subkategori-asset',
                 '/' . auth()->user()->role . '/merk',
                 '/' . auth()->user()->role . '/satuan',
-                '/' . auth()->user()->role . '/lokasi'
+                '/' . auth()->user()->role . '/lokasi',
+                '/' . auth()->user()->role . '/distributor',
             ])) ? 'active' : '' ?>">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-box"></i><span>Master Data</span></a>
                 <ul class="dropdown-menu">
