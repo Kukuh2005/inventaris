@@ -19,6 +19,7 @@ use App\Http\Controllers\PengadaanController;
 use App\Http\Controllers\DepresiasiController;
 use App\Http\Controllers\MutasiLokasiController;
 use App\Http\Controllers\HitungDepresiasiController;
+use App\Http\Controllers\OpnameController;
 
 
 Route::get('/', [AuthenticatedSessionController::class, 'landing']);
@@ -75,7 +76,7 @@ Route::middleware(['auth', 'adminMiddleware'])->group(function(){
     Route::post('/admin/depresiasi/store', [DepresiasiController::class, 'store']);
     Route::put('/admin/depresiasi/{encrypted_id}/update', [DepresiasiController::class, 'update']);
     Route::get('/admin/depresiasi/{encrypted_id}/delete', [DepresiasiController::class, 'destroy']);
-
+    
     Route::get('/admin/mutasi-lokasi', [MutasiLokasiController::class, 'index']);
     Route::post('/admin/mutasi-lokasi/store', [MutasiLokasiController::class, 'store']);
     Route::put('/admin/mutasi-lokasi/{encrypted_id}/update', [MutasiLokasiController::class, 'update']);
@@ -86,6 +87,12 @@ Route::middleware(['auth', 'adminMiddleware'])->group(function(){
     Route::post('/admin/hitung-depresiasi/all', [HitungDepresiasiController::class, 'keseluruhan']);
     Route::put('/admin/hitung-depresiasi/{encrypted_id}/update', [HitungDepresiasiController::class, 'update']);
     Route::get('/admin/hitung-depresiasi/{encrypted_id}/delete', [HitungDepresiasiController::class, 'destroy']);
+
+    Route::get('/admin/opname', [OpnameController::class, 'index']);
+    Route::post('/admin/opname/store', [OpnameController::class, 'store']);
+    Route::put('/admin/opname/{encrypted_id}/update', [OpnameController::class, 'update']);
+    Route::get('/admin/opname/{encrypted_id}/delete', [OpnameController::class, 'destroy']);
+    
 });
 
 

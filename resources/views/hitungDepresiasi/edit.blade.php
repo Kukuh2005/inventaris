@@ -1,6 +1,6 @@
 @foreach($hitungDepresiasi as $item)
 <div class="modal fade" tabindex="-1" role="dialog" id="edit{{$item->encrypted_id}}">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-warning">Edit Hitung Depresiasi</h5>

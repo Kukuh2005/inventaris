@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('opnames', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->integer('id_pengadaan');
             $table->date('tgl_opname');
             $table->string('kondisi', 25);
             $table->string('keterangan', 50)->nullable();
+            $table->timestamps();
         });
     }
 

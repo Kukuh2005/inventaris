@@ -43,7 +43,7 @@
                         <!-- Input Tanggal Pengadaan -->
                         <div class="form-group col-md-6">
                             <label>Tanggal Pengadaan</label>
-                            <input type="date" class="form-control" name="tgl_pengadaan" value="{{ $item->tgl_pengadaan }}">
+                            <input type="date" class="form-control" name="tgl_pengadaan" value="{{ $item->tgl_pengadaan }}" max="<?php echo date('Y-m-d') ?>">
                         </div>
                     </div>
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Pengadaan;
 
 class Opname extends Model
 {
@@ -12,5 +13,9 @@ class Opname extends Model
         'kondisi',
         'keterangan',
     ];
+
+    public function pengadaan(){
+        return $this->belongsTo(Pengadaan::class, 'id_pengadaan');
+    }
 }
 

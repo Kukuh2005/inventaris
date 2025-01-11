@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         HitungDepresiasi::create([
             'id_pengadaan' => 1,
             'tgl_hitung_depresiasi' => Carbon::now()->toDateString(),
-            'bulan' => 'Januari',
+            'bulan' => '1',
             'durasi' => 12,
             'nilai_barang' => 5000000,            
         ]);
