@@ -40,7 +40,6 @@
                                 <td class="align-middle">
                                     <button class="btn btn-sm btn-warning" data-toggle="modal"
                                     data-target="#edit{{$item->encrypted_id}}">Edit</button>
-                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{$item->encrypted_id}}">Delete</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -51,7 +50,6 @@
         </div>
     </section>
 </div>
-@include('opname.delete')
 @include('opname.form')
 @include('opname.edit')
 @endsection

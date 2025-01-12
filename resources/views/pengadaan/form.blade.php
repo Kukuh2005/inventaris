@@ -54,7 +54,7 @@
                         
                         <!-- Input Nilai Barang -->
                         <div class="form-group col-md-4">
-                            <label>jumlah Barang</label>
+                            <label>Jumlah Barang</label>
                             <input type="number" class="form-control" id="jumlah" name="jumlah_barang" oninput="HitungNilai(this)" placeholder="Masukkan jumlah barang">
                         </div>
 

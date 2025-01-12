@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Tanggal Mutasi</label>
-                            <input type="date" class="form-control" name="tgl_mutasi" max="<?php echo date('Y-m-d') ?>" value="<?php echo date('Y-m-d') ?>">
+                            <input type="date" class="form-control" name="tgl_mutasi" min="<?php echo date('Y-m-d') ?>" value="<?php echo date('Y-m-d') ?>">
                         </div>
                     </div>
                     <div class="row">

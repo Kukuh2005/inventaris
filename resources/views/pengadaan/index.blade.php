@@ -37,12 +37,11 @@
                                 <td class="align-middle">{{$item->kode_pengadaan}}</td>
                                 <td class="align-middle">{{$item->no_invoice}}</td>
                                 <td class="align-middle">{{$item->tgl_pengadaan}}</td>
-                                <td class="align-middle">{{$item->masterBarang->nama_barang}}</td>
-                                <td class="align-middle">{{$item->distributor->nama_distributor}}</td>
+                                <td class="align-middle">{{$item->masterBarang->nama_barang ?? 'Data Kososng'}}</td>
+                                <td class="align-middle">{{$item->distributor->nama_distributor ?? 'Data Kososong'}}</td>
                                 <td class="align-middle">
-                                <button class="btn btn-sm btn-info d-block m-2" data-toggle="modal" data-target="#view{{$item->encrypted_id}}">View</button>
-                                <button class="btn btn-sm btn-warning d-block m-2" data-toggle="modal" data-target="#edit{{$item->encrypted_id}}">Edit</button>
-                                <button type="button" class="btn btn-sm btn-danger d-block m-2" data-toggle="modal" data-target="#delete{{$item->encrypted_id}}">Delete</button>
+                                    <button class="btn btn-sm btn-info d-block m-2" data-toggle="modal" data-target="#view{{$item->encrypted_id}}">View</button>
+                                    <button class="btn btn-sm btn-warning d-block m-2" data-toggle="modal" data-target="#edit{{$item->encrypted_id}}">Edit</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -53,7 +52,6 @@
         </div>
     </section>
 </div>
-@include('pengadaan.delete')
 @include('pengadaan.form')
 @include('pengadaan.edit')
 @include('pengadaan.view')

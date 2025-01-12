@@ -70,7 +70,6 @@ Route::middleware(['auth', 'adminMiddleware'])->group(function(){
     Route::get('/admin/pengadaan', [PengadaanController::class, 'index']);
     Route::post('/admin/pengadaan/store', [PengadaanController::class, 'store']);
     Route::put('/admin/pengadaan/{encrypted_id}/update', [PengadaanController::class, 'update']);
-    Route::get('/admin/pengadaan/{encrypted_id}/delete', [PengadaanController::class, 'destroy']);
 
     Route::get('/admin/depresiasi', [DepresiasiController::class, 'index']);
     Route::post('/admin/depresiasi/store', [DepresiasiController::class, 'store']);
@@ -86,12 +85,10 @@ Route::middleware(['auth', 'adminMiddleware'])->group(function(){
     Route::post('/admin/hitung-depresiasi/store', [HitungDepresiasiController::class, 'store']);
     Route::post('/admin/hitung-depresiasi/all', [HitungDepresiasiController::class, 'keseluruhan']);
     Route::put('/admin/hitung-depresiasi/{encrypted_id}/update', [HitungDepresiasiController::class, 'update']);
-    Route::get('/admin/hitung-depresiasi/{encrypted_id}/delete', [HitungDepresiasiController::class, 'destroy']);
 
     Route::get('/admin/opname', [OpnameController::class, 'index']);
     Route::post('/admin/opname/store', [OpnameController::class, 'store']);
     Route::put('/admin/opname/{encrypted_id}/update', [OpnameController::class, 'update']);
-    Route::get('/admin/opname/{encrypted_id}/delete', [OpnameController::class, 'destroy']);
     
 });
 

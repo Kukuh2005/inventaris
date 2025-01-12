@@ -58,9 +58,7 @@
                                 <td class="align-middle">
                                     <div class="d-block">
                                         <button class="btn btn-sm btn-warning" data-toggle="modal"
-                                            data-target="#edit{{$item->encrypted_id}}">Edit</button>
-                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
-                                            data-target="#delete{{$item->encrypted_id}}">Delete</button>
+                                            data-target="#edit{{$item->encrypted_id}}">Edit</button>                                        
                                     </div>
                                 </td>
                             </tr>
@@ -72,7 +70,6 @@
         </div>
     </section>
 </div>
-@include('hitungDepresiasi.delete')
 @include('hitungDepresiasi.form')
 @include('hitungDepresiasi.edit')
 @include('hitungDepresiasi.formHitungKeseluruhan')

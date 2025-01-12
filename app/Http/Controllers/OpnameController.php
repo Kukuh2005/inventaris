@@ -85,10 +85,6 @@ class OpnameController extends Controller
      */
     public function destroy($encrypted_id)
     {
-        $id = Crypt::decryptString($encrypted_id);
         
-        $opname = Opname::findOrFail($id)->delete();
-        
-        return back()->with('sukses', 'Berhasil Hapus Data');
     }
 }

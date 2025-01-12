@@ -22,7 +22,7 @@
                     <div class="row">
                       <div class="form-group col-md-6">
                         <label>Tanggal</label>
-                        <input type="date" class="form-control" name="tgl_opname" value="{{$item->tgl_opname}}" max="<?php echo date('Y-m-d') ?>">
+                        <input type="date" class="form-control" name="tgl_opname" value="{{$item->tgl_opname}}" min="{{$item->pengadaan->tgl_pengadaan}}">
                       </div>
                       <div class="form-group col-md-6">
                         <label>Kondisi</label>

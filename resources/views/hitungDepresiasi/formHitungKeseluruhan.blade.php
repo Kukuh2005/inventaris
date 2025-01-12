@@ -12,7 +12,7 @@
                     @csrf
                     <div class="form-group">
                         <label>Tanggal Depresiasi</label>
-                        <input type="date" class="form-control" name="tgl_hitung_depresiasi" value="<?php echo date('Y-m-d'); ?>"  required>
+                        <input type="date" class="form-control" name="tgl_hitung_depresiasi" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>"  required>
                     </div>
                     <button type="submit" class="btn btn-primary float-right">Simpan</button>
                 </form>

@@ -14,13 +14,8 @@
                     @method('PUT')
                     <div class="form-group">
                         <label>Barang</label>
-                        <select class="form-control" name="id_pengadaan">
-                            <option value="">Pilih Barang...</option>
-                            @foreach($pengadaan as $barang)
-                                <option value="{{ $barang->id }}" {{ $item->id_pengadaan == $barang->id ? 'selected' : '' }}>
-                                    {{ $barang->kode_pengadaan }}
-                                </option>
-                            @endforeach
+                        <select class="form-control" name="id_pengadaan" disabled>
+                            <option value="{{$item->pengadaan->id}}">{{$item->pengadaan->kode_pengadaan}}</option>
                         </select>
                     </div>
                     <div class="row">
@@ -37,7 +32,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Tanggal Mutasi</label>
-                            <input type="date" class="form-control" name="tgl_mutasi" value="{{ $item->tgl_mutasi }}" max="<?php echo date('Y-m-d') ?>">
+                            <input type="date" class="form-control" name="tgl_mutasi" value="{{ $item->tgl_mutasi }}" min="{{$item->pengadaan->tgl_pengadaan}}">
                         </div>
                     </div>
                     <div class="row">

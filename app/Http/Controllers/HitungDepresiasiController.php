@@ -184,10 +184,6 @@ class HitungDepresiasiController extends Controller
      */
     public function destroy($encryted_id)
     {
-        $id = Crypt::decryptString($encryted_id);
-
-        $hitungDepresiasi = HitungDepresiasi::findOrFail($id)->delete();
-
-        return back()->with('sukses', 'Berhasil Hapus Data');
+        
     }
 }

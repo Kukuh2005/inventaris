@@ -167,10 +167,6 @@ class PengadaanController extends Controller
      */
     public function destroy($encrypted_id)
     {
-        $id = Crypt::decryptString($encrypted_id);
-
-        $pengadaan = Pengadaan::findOrFail($id)->delete();
-
-        return back()->with('sukses', 'Berhasil Hapus Data');
+        
     }
 }

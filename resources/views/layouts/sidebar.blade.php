@@ -20,6 +20,7 @@
                 '/' . auth()->user()->role . '/satuan',
                 '/' . auth()->user()->role . '/lokasi',
                 '/' . auth()->user()->role . '/distributor',
+                '/' . auth()->user()->role . '/depresiasi',
             ])) ? 'active' : '' ?>">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-box"></i><span>Master Data</span></a>
                 <ul class="dropdown-menu">
@@ -33,7 +34,7 @@
                         <a class="nav-link" href="/{{auth()->user()->role}}/subkategori-asset">Subkategori Asset</a>
                     </li>
                     <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/merk') ? 'active' : '' ?>">
-                        <a class="nav-link" href="/{{auth()->user()->role}}/merk">merk</a>
+                        <a class="nav-link" href="/{{auth()->user()->role}}/merk">Merk</a>
                     </li>
                     <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/satuan') ? 'active' : '' ?>">
                         <a class="nav-link" href="/{{auth()->user()->role}}/satuan">Satuan</a>
@@ -44,25 +45,24 @@
                     <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/distributor') ? 'active' : '' ?>">
                         <a class="nav-link" href="/{{auth()->user()->role}}/distributor">Distributor</a>
                     </li>
+                    <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/depresiasi') ? 'active' : '' ?>">
+                        <a class="nav-link" href="/{{auth()->user()->role}}/depresiasi">Depresiasi</a>
+                    </li>
                 </ul>
             </li>
-            <li class="menu-header">Pengelolaan Inventaris</li>
+            <li class="menu-header">Transaksi</li>
             <li class="dropdown <?= (in_array($_SERVER['REQUEST_URI'], [
                 '/' . auth()->user()->role . '/pengadaan',
                 '/' . auth()->user()->role . '/mutasi-lokasi',
-                '/' . auth()->user()->role . '/depresiasi',
                 '/' . auth()->user()->role . '/hitung-depresiasi'
             ])) ? 'active' : '' ?>">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-folder-open"></i><span>Inventarisasi</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-shopping-cart"></i><span>Transaksi</span></a>
                 <ul class="dropdown-menu">
                     <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/pengadaan') ? 'active' : '' ?>">
                         <a class="nav-link" href="/{{auth()->user()->role}}/pengadaan">Pengadaan</a>
                     </li>
                     <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/mutasi-lokasi') ? 'active' : '' ?>">
                         <a class="nav-link" href="/{{auth()->user()->role}}/mutasi-lokasi">Mutasi Lokasi</a>
-                    </li>
-                    <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/depresiasi') ? 'active' : '' ?>">
-                        <a class="nav-link" href="/{{auth()->user()->role}}/depresiasi">Depresiasi</a>
                     </li>
                     <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/hitung-depresiasi') ? 'active' : '' ?>">
                         <a class="nav-link" href="/{{auth()->user()->role}}/hitung-depresiasi">Hitung Depresiasi</a>
