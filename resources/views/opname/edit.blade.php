@@ -12,11 +12,8 @@
                     @method('PUT')
                     <div class="form-group">
                       <label>Barang</label>
-                      <select name="id_pengadaan" class="form-control" id="">
-                        <option value="">Pilih Barang...</option>
-                        @foreach($pengadaan as $barang)
-                        <option value="{{$barang->id}}" {{$item->id_pengadaan == $barang->id ? 'selected' : ''}}>{{$barang->kode_pengadaan}}</option>
-                        @endforeach
+                      <select name="id_pengadaan" class="form-control" id="" disabled>
+                        <option value="{{$item->pengadaan->id}}">{{$item->pengadaan->kode_pengadaan}}</option>
                       </select>
                     </div>
                     <div class="row">
