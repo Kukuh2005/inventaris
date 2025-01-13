@@ -20,6 +20,7 @@ use App\Http\Controllers\DepresiasiController;
 use App\Http\Controllers\MutasiLokasiController;
 use App\Http\Controllers\HitungDepresiasiController;
 use App\Http\Controllers\OpnameController;
+use App\Http\Controllers\LaporanController;
 
 
 Route::get('/', [AuthenticatedSessionController::class, 'landing']);
@@ -90,6 +91,9 @@ Route::middleware(['auth', 'adminMiddleware'])->group(function(){
     Route::post('/admin/opname/store', [OpnameController::class, 'store']);
     Route::put('/admin/opname/{encrypted_id}/update', [OpnameController::class, 'update']);
     
+    Route::get('/admin/laporan', [LaporanController::class, 'index']);
+    Route::get('/admin/laporan/{encrypted_id}/pdf', [LaporanController::class, 'printPengadaan']);
+    Route::get('/admin/laporan/{id_barang}/print', [LaporanController::class, 'printBarang']);
 });
 
 

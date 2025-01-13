@@ -77,25 +77,7 @@ class PengadaanController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'id_master_barang' => 'required|integer',
-            'id_depresiasi' => 'required|integer',
-            'id_merk' => 'required|integer',
-            'id_satuan' => 'required|integer',
-            'id_sub_kategori_asset' => 'required|integer',
-            'id_distributor' => 'required|integer',
-            'kode_pengadaan' => 'required|string|max:255',
-            'no_invoice' => 'required|string|max:255',
-            'no_seri_barang' => 'nullable|string|max:255',
-            'tahun_produksi' => 'required|integer|min:1900|max:' . date('Y'),
-            'tgl_pengadaan' => 'required|date',
-            'harga_barang' => 'required|numeric|min:0',
-            'jumlah_barang' => 'required|integer|min:1',
-            'fb' => 'required|in:0,1',
-            'keterangan' => 'nullable|string',
-        ]);
-        
+    {   
         $pengadaan = new Pengadaan;
         $pengadaan->id_master_barang = $request->id_master_barang;
         $pengadaan->id_depresiasi = $request->id_depresiasi;
