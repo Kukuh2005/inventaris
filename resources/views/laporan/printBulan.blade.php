@@ -120,12 +120,8 @@
         <div class="section-title">Informasi Pengadaan</div>
         <table class="info-table" style="width: 100%;">
             <tr>
-                <td style="width: 30%; font-weight: bold;">Kode Pengadaan</td>
-                <td style="width: 70%;">: {{ $pengadaan->first()->kode_pengadaan ?? 'N/A' }}</td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold;">Tanggal Pengadaan</td>
-                <td>: {{ \Carbon\Carbon::parse($pengadaan->first()->tgl_pengadaan ?? now())->format('d F Y') }}</td>
+                <td style="font-weight: bold; width: 30%">Periode Pengadaan</td>
+                <td style="width: 70%">: {{ \Carbon\Carbon::parse($pengadaan->first()->tgl_pengadaan ?? now())->format('F Y') }}</td>
             </tr>
             <tr>
                 <td style="font-weight: bold;">Jumlah Barang</td>
@@ -142,9 +138,9 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Kode</th>
                     <th>Nama</th>
                     <th>Merk</th>
+                    <th>Distributor</th>
                     <th>Jumlah</th>
                     <th>Harga</th>
                     <th>Total Harga</th>
@@ -153,9 +149,9 @@
             <tbody>
                 @foreach ($pengadaan as $item)
                 <tr>
-                    <td>{{ $item->masterBarang->kode_barang }}</td>
                     <td>{{ $item->masterBarang->nama_barang }}</td>
                     <td>{{ $item->merk->merk }}</td>
+                    <td>{{ $item->distributor->nama_distributor }}</td>
                     <td>{{ $item->jumlah_barang }}</td>
                     <td>Rp{{ number_format($item->harga_barang, 0, ',', '.') }}</td>
                     <td>Rp{{ number_format($item->nilai_barang, 0, ',', '.') }}</td>

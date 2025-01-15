@@ -93,7 +93,7 @@ Route::middleware(['auth', 'adminMiddleware'])->group(function(){
     
     Route::get('/admin/laporan', [LaporanController::class, 'index']);
     Route::get('/admin/laporan/{encrypted_id}/pdf', [LaporanController::class, 'printPengadaan']);
-    Route::get('/admin/laporan/{id_barang}/print', [LaporanController::class, 'printBarang']);
+    Route::get('/admin/laporan/{tahun}/{bulla}/print', [LaporanController::class, 'printBulan']);
 });
 
 

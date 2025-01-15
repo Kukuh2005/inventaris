@@ -8,6 +8,8 @@ use App\Models\Pengadaan;
 use App\Models\MasterBarang;
 use Illuminate\Support\Facades\Crypt;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class LaporanController extends Controller
 {
@@ -20,9 +22,18 @@ class LaporanController extends Controller
             $item->encrypted_id = Crypt::encryptString($item->id);
             return $item;
         });
-        $masterBarang = MasterBarang::all();
 
-        return view('laporan.index', compact('pengadaan', 'masterBarang'));
+        $tahun = Pengadaan::select(DB::raw('YEAR(tgl_pengadaan) as tahun'))
+        ->distinct()
+        ->orderBy('tahun', 'asc')
+        ->pluck('tahun');
+
+        $masterBarang = MasterBarang::all();
+        $now = Carbon::now();
+        $tahun_sekarang = $now->year;
+        $bulan = $now->month;
+
+        return view('laporan.index', compact('pengadaan', 'masterBarang', 'bulan', 'tahun', 'tahun_sekarang'));
     }
 
     public function printPengadaan($encrypted_id)
@@ -35,11 +46,15 @@ class LaporanController extends Controller
         return $pdf->stream();
     }
 
-    public function printBarang($id_barang)
+    public function printBulan($tahun, $bulan)
     {
-        $pengadaan = Pengadaan::where('id_master_barang', $id_barang)->get();
+        $pengadaan = Pengadaan::whereYear('tgl_pengadaan', $tahun)->whereMonth('tgl_pengadaan', $bulan)->get();
+        // dd($pengadaan);
+        if($pengadaan->count() == 0){
+            return abort(403, 'Data Kososng');
+        }
 
-        $pdf = Pdf::loadView('laporan.printBarang', compact('pengadaan'));
+        $pdf = Pdf::loadView('laporan.printBulan', compact('pengadaan'));
         return $pdf->stream();
     }
 

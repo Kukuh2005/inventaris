@@ -14,7 +14,7 @@
                 <div class="card-header">
                     <h4>Data Laporan Pengadaan</h4>
                     <div class="card-header-form">
-                        <button type="button" class="btn btn-danger mb-2 float-right" data-toggle="modal"data-target="#form-pdf">PDF</button>
+                        <button type="button" class="btn btn-danger mb-2 float-right" data-toggle="modal"data-target="#form-pdf">Print Bulanan</button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -58,15 +58,16 @@
 
 @push('script')
 <script>
-    function printBarang(){
-        var id_barang = document.getElementById('id_barang').value;    
+    function printBulanan(){
+        var tahun = document.getElementById('tahun').value;  
+        var bulan = document.getElementById('bulan').value;  
         
-        if (!id_barang) {
+        if (!tahun || !bulan) {
             alert("Silakan pilih barang terlebih dahulu!");
             return;
         }
 
-        window.open('/{{auth()->user()->role}}/laporan/' + id_barang + '/print');
+        window.open('/{{auth()->user()->role}}/laporan/' + tahun + '/' + bulan + '/print');
     }
 </script>
 @endpush

@@ -218,5 +218,177 @@ class DatabaseSeeder extends Seeder
             'flag_lokasi' => 'Di Kantor Depan',
             'flag_pindah' => 'Selesai',
         ]);
+
+         // Tambahkan lebih banyak data Distributor
+         Distributor::create([
+            'nama_distributor' => 'Andi Elektronik',
+            'alamat' => 'Jakarta Selatan',
+            'no_telp' => '081234567890',
+            'email' => 'andi@elektronik.com',
+            'keterangan' => 'Spesialis barang elektronik',
+        ]);
+
+        Distributor::create([
+            'nama_distributor' => 'Bina Office Supplies',
+            'alamat' => 'Surabaya',
+            'no_telp' => '081223344556',
+            'email' => 'bina@officesupplies.com',
+            'keterangan' => 'Penyedia kebutuhan kantor',
+        ]);
+
+        Distributor::create([
+            'nama_distributor' => 'Citra Furnitur',
+            'alamat' => 'Bandung',
+            'no_telp' => '081345678901',
+            'email' => 'citra@furniture.com',
+            'keterangan' => 'Spesialis furnitur kantor',
+        ]);
+
+        Distributor::create([
+            'nama_distributor' => 'Delta Komputer',
+            'alamat' => 'Yogyakarta',
+            'no_telp' => '081987654321',
+            'email' => 'delta@komputer.com',
+            'keterangan' => 'Penyedia perangkat IT',
+        ]);
+
+        Distributor::create([
+            'nama_distributor' => 'Eka Hardware',
+            'alamat' => 'Denpasar',
+            'no_telp' => '081456789012',
+            'email' => 'eka@hardware.com',
+            'keterangan' => 'Peralatan teknik dan mesin',
+        ]);
+
+        // Tambahkan data Pengadaan selama 1 tahun
+        $pengadaans = [
+            [
+                'id_master_barang' => 1,
+                'id_depresiasi' => 1,
+                'id_merk' => 1,
+                'id_satuan' => 1,
+                'id_sub_kategori_asset' => 1,
+                'id_distributor' => 2,
+                'kode_pengadaan' => 'PIVN-2025100006',
+                'no_invoice' => 'INV-202506',
+                'no_seri_barang' => 'SN67891',
+                'tahun_produksi' => 2023,
+                'harga_barang' => 2000000,
+                'jumlah_barang' => 15,
+                'nilai_barang' => 30000000,
+                'fb' => '0',
+                'keterangan' => 'Pengadaan meja kerja tambahan',
+            ],
+            [
+                'id_master_barang' => 2,
+                'id_depresiasi' => 2,
+                'id_merk' => 3,
+                'id_satuan' => 1,
+                'id_sub_kategori_asset' => 2,
+                'id_distributor' => 3,
+                'kode_pengadaan' => 'PIVN-2025100007',
+                'no_invoice' => 'INV-202507',
+                'no_seri_barang' => 'SN98761',
+                'tahun_produksi' => 2022,
+                'harga_barang' => 22000000,
+                'jumlah_barang' => 3,
+                'nilai_barang' => 66000000,
+                'fb' => '1',
+                'keterangan' => 'Pengadaan laptop untuk proyek',
+            ],
+            [
+                'id_master_barang' => 3,
+                'id_depresiasi' => 3,
+                'id_merk' => 2,
+                'id_satuan' => 1,
+                'id_sub_kategori_asset' => 3,
+                'id_distributor' => 4,
+                'kode_pengadaan' => 'PIVN-2025100008',
+                'no_invoice' => 'INV-202508',
+                'no_seri_barang' => 'SN54321',
+                'tahun_produksi' => 2024,
+                'harga_barang' => 7500000,
+                'jumlah_barang' => 8,
+                'nilai_barang' => 60000000,
+                'fb' => '0',
+                'keterangan' => 'Pengadaan lemari arsip tambahan',
+            ],
+            [
+                'id_master_barang' => 2,
+                'id_depresiasi' => 2,
+                'id_merk' => 3,
+                'id_satuan' => 1,
+                'id_sub_kategori_asset' => 2,
+                'id_distributor' => 1,
+                'kode_pengadaan' => 'PIVN-2025100009',
+                'no_invoice' => 'INV-202509',
+                'no_seri_barang' => 'SN54322',
+                'tahun_produksi' => 2023,
+                'harga_barang' => 21000000,
+                'jumlah_barang' => 2,
+                'nilai_barang' => 42000000,
+                'fb' => '0',
+                'keterangan' => 'Pengadaan komputer desktop untuk staf',
+            ],
+            [
+                'id_master_barang' => 1,
+                'id_depresiasi' => 1,
+                'id_merk' => 2,
+                'id_satuan' => 1,
+                'id_sub_kategori_asset' => 1,
+                'id_distributor' => 2,
+                'kode_pengadaan' => 'PIVN-2025100010',
+                'no_invoice' => 'INV-202510',
+                'no_seri_barang' => 'SN98763',
+                'tahun_produksi' => 2023,
+                'harga_barang' => 1800000,
+                'jumlah_barang' => 25,
+                'nilai_barang' => 45000000,
+                'fb' => '0',
+                'keterangan' => 'Pengadaan meja tambahan untuk ruang kerja',
+            ],
+            [
+                'id_master_barang' => 3,
+                'id_depresiasi' => 3,
+                'id_merk' => 1,
+                'id_satuan' => 1,
+                'id_sub_kategori_asset' => 3,
+                'id_distributor' => 4,
+                'kode_pengadaan' => 'PIVN-2025100011',
+                'no_invoice' => 'INV-202511',
+                'no_seri_barang' => 'SN98764',
+                'tahun_produksi' => 2024,
+                'harga_barang' => 7000000,
+                'jumlah_barang' => 6,
+                'nilai_barang' => 42000000,
+                'fb' => '0',
+                'keterangan' => 'Pengadaan lemari arsip untuk gudang utama',
+            ],
+            [
+                'id_master_barang' => 2,
+                'id_depresiasi' => 2,
+                'id_merk' => 3,
+                'id_satuan' => 1,
+                'id_sub_kategori_asset' => 2,
+                'id_distributor' => 5,
+                'kode_pengadaan' => 'PIVN-2025100012',
+                'no_invoice' => 'INV-202512',
+                'no_seri_barang' => 'SN98765',
+                'tahun_produksi' => 2023,
+                'harga_barang' => 24000000,
+                'jumlah_barang' => 4,
+                'nilai_barang' => 96000000,
+                'fb' => '1',
+                'keterangan' => 'Pengadaan laptop untuk divisi IT',
+            ],
+        ];
+
+        // Generate tanggal pengadaan
+        $startDate = Carbon::now();
+        foreach ($pengadaans as $key => $pengadaan) {
+            $pengadaan['tgl_pengadaan'] = $startDate->copy()->addMonths($key)->toDateString();
+            Pengadaan::create($pengadaan);
+        }
+
     }
 }

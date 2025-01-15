@@ -14,7 +14,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label>Barang</label>
-                        <select class="form-control" name="id_pengadaan" disabled>
+                        <select class="form-control" name="id_pengadaan" readonly>
                             <option value="{{$item->pengadaan->id}}">{{$item->pengadaan->kode_pengadaan}}</option>
                         </select>
                     </div>
