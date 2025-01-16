@@ -10,7 +10,7 @@
                     @csrf
                     <div class="form-group">
                       <label>Kode</label>
-                      <input type="text" class="form-control" name="kode_lokasi">
+                      <input type="text" class="form-control" name="kode_lokasi" value="{{$kode}}" disabled>
                     </div>
                     <div class="form-group">
                       <label>Nama Lokasi</label>

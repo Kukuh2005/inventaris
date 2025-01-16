@@ -18,8 +18,26 @@ class KategoriAssetController extends Controller
             $item->encrypted_id = Crypt::encryptString($item->id);
             return $item;
         });
+
+        $kode = $this->generateKode();
         
-        return view('kategoriAsset.index', compact('kategoriAsset'));
+        return view('kategoriAsset.index', compact('kategoriAsset', 'kode'));
+    }
+
+    private function generateKode(){
+        $cek = KategoriAsset::count();
+
+        if($cek == 0){
+            $nomor = "001";
+            $kode = "KA" . $nomor;
+        }else{
+            $data_terakhir = KategoriAsset::all()->last();
+            $nomor_urut = (int)substr($data_terakhir->kode_kategori_asset, -3) + 1;
+            $nomor_urut_padded = str_pad($nomor_urut, 3, '0', STR_PAD_LEFT);
+            $kode = "KA" . $nomor_urut_padded;
+        }
+
+        return $kode;
     }
 
     /**

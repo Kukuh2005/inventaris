@@ -19,7 +19,25 @@ class LokasiController extends Controller
             return $item;
         });
 
-        return view('lokasi.index', compact('lokasi'));
+        $kode = $this->generateKode();
+
+        return view('lokasi.index', compact('lokasi', 'kode'));
+    }
+
+    private function generateKode(){
+        $cek = Lokasi::count();
+
+        if($cek == 0){
+            $nomor = "001";
+            $kode = "LO" . $nomor;
+        }else{
+            $data_terakhir = Lokasi::all()->last();
+            $nomor_urut = (int)substr($data_terakhir->kode_lokasi, -3) + 1;
+            $nomor_urut_padded = str_pad($nomor_urut, 3, '0', STR_PAD_LEFT);
+            $kode = "LO" . $nomor_urut_padded;
+        }
+
+        return $kode;
     }
 
     /**
@@ -36,7 +54,7 @@ class LokasiController extends Controller
     public function store(Request $request)
     {
         $lokasi = new Lokasi;
-        $lokasi->kode_lokasi = $request->kode_lokasi;
+        $lokasi->kode_lokasi = $this->generateKode();
         $lokasi->nama_lokasi = $request->nama_lokasi;
         $lokasi->keterangan = $request->keterangan;
         $lokasi->save();

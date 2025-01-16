@@ -53,7 +53,7 @@ class PengadaanController extends Controller
         $tahun_bulan = $now->year . $now->month;
 
         if($cek == 0){
-            $nomor = 00001;
+            $nomor = "00001";
             $kode = "PIVN-" . $tahun_bulan . $nomor;
         }else{
             $data_terakhir = Pengadaan::all()->last();

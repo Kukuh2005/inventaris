@@ -12,14 +12,14 @@
                     @method('PUT')
                     <div class="form-group">
                       <label>Barang</label>
-                      <select name="id_pengadaan" class="form-control" id="" disabled>
+                      <select name="id_pengadaan" class="form-control" id="" readonly>
                         <option value="{{$item->pengadaan->id}}">{{$item->pengadaan->kode_pengadaan}}</option>
                       </select>
                     </div>
                     <div class="row">
                       <div class="form-group col-md-6">
                         <label>Tanggal</label>
-                        <input type="date" class="form-control" name="tgl_opname" value="{{$item->tgl_opname}}" min="{{$item->pengadaan->tgl_pengadaan}}">
+                        <input type="date" class="form-control" name="tgl_opname" value="{{$item->tgl_opname}}">
                       </div>
                       <div class="form-group col-md-6">
                         <label>Kondisi</label>

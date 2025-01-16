@@ -18,7 +18,24 @@ class MasterBarangController extends Controller
             $item->encrypted_id = Crypt::encryptString($item->id);
             return $item;
         });
-        return view('masterBarang.index', compact('masterBarang'));
+        $kode = $this->generateKode();
+        return view('masterBarang.index', compact('masterBarang', 'kode'));
+    }
+
+    private function generateKode(){
+        $cek = MasterBarang::count();
+
+        if($cek == 0){
+            $nomor = "001";
+            $kode = "BRG" . $nomor;
+        }else{
+            $data_terakhir = MasterBarang::all()->last();
+            $nomor_urut = (int)substr($data_terakhir->kode_barang, -3) + 1;
+            $nomor_urut_padded = str_pad($nomor_urut, 3, '0', STR_PAD_LEFT);
+            $kode = "BRG" . $nomor_urut_padded;
+        }
+
+        return $kode;
     }
 
     /**
@@ -35,7 +52,7 @@ class MasterBarangController extends Controller
     public function store(Request $request)
     {
         $masterBarang = new MasterBarang;
-        $masterBarang->kode_barang = $request->kode;
+        $masterBarang->kode_barang = $this->generateKode();
         $masterBarang->nama_barang = $request->nama;
         $masterBarang->spesifikasi_teknis = $request->spesifikasi_teknis;
         $masterBarang->save();
