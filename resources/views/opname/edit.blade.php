@@ -13,15 +13,19 @@
                     <div class="form-group">
                       <label>Barang</label>
                       <select name="id_pengadaan" class="form-control" id="" readonly>
-                        <option value="{{$item->pengadaan->id}}">{{$item->pengadaan->kode_pengadaan}}</option>
+                        <option value="{{$item->pengadaan->id}}">{{$item->pengadaan->masterBarang->nama_barang}}</option>
                       </select>
                     </div>
                     <div class="row">
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-4">
                         <label>Tanggal</label>
                         <input type="date" class="form-control" name="tgl_opname" value="{{$item->tgl_opname}}">
                       </div>
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-4">
+                        <label>Jumlah</label>
+                        <input type="number" class="form-control" name="jumlah" min="1" value="1" value="{{$item->jumlah}}">
+                      </div>
+                      <div class="form-group col-md-4">
                         <label>Kondisi</label>
                         <select name="kondisi" class="form-control" id="kondisi">
                           <option value="">Pilih Kondisi...</option>

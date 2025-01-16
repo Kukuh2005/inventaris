@@ -90,6 +90,8 @@ Route::middleware(['auth', 'adminMiddleware'])->group(function(){
     Route::get('/admin/opname', [OpnameController::class, 'index']);
     Route::post('/admin/opname/store', [OpnameController::class, 'store']);
     Route::put('/admin/opname/{encrypted_id}/update', [OpnameController::class, 'update']);
+    Route::get('/admin/opname/{tahun}/{bulan}/print', [OpnameController::class, 'printBulan']);
+    Route::get('/admin/opname/{encrypted_id}/pdf', [OpnameController::class, 'printOpname']);
     
     Route::get('/admin/laporan', [LaporanController::class, 'index']);
     Route::get('/admin/laporan/{encrypted_id}/pdf', [LaporanController::class, 'printPengadaan']);

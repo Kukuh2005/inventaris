@@ -25,7 +25,10 @@ class HitungDepresiasiController extends Controller
             $item->encrypted_id = Crypt::encryptString($item->id);
             return $item;
         });
-        $pengadaan = Pengadaan::all();
+        $pengadaan = Pengadaan::select('id_master_barang')
+        ->distinct()
+        ->with('masterBarang')
+        ->get();
 
         return view('hitungDepresiasi.index', compact('hitungDepresiasi', 'pengadaan', 'bulan', 'tahun'));
     }

@@ -13,16 +13,20 @@
                       <select name="id_pengadaan" class="form-control" id="">
                         <option value="">Pilih Barang...</option>
                         @foreach($pengadaan as $barang)
-                        <option value="{{$barang->id}}">{{$barang->kode_pengadaan}}</option>
+                        <option value="{{$barang->id_master_barang}}">{{$barang->masterBarang->nama_barang}}</option>
                         @endforeach
                       </select>
                     </div>
                     <div class="row">
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-4">
                         <label>Tanggal</label>
                         <input type="date" class="form-control" name="tgl_opname" min="<?php echo date('Y-m-d') ?>" value="<?php echo date('Y-m-d') ?>">
                       </div>
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-4">
+                        <label>Jumlah</label>
+                        <input type="number" class="form-control" name="jumlah" min="1" value="1">
+                      </div>
+                      <div class="form-group col-md-4">
                         <label>Kondisi</label>
                         <select name="kondisi" class="form-control" id="kondisi">
                           <option value="">Pilih Kondisi...</option>

@@ -35,7 +35,7 @@
                             <tr>
                                 <td class="align-middle" scope="row">{{ $loop->iteration }}</td>
                                 <td class="align-middle">{{ $item->tgl_mutasi }}</td>
-                                <td class="align-middle">{{ $item->pengadaan->kode_pengadaan ?? 'Tidak Ditemukan' }}</td>
+                                <td class="align-middle">{{ $item->pengadaan->masterBarang->nama_barang ?? 'Tidak Ditemukan' }}</td>
                                 <td class="align-middle">{{ $item->lokasi->nama_lokasi ?? 'Tidak Ditemukan' }}</td>
                                 <td class="align-middle">{{ $item->flag_lokasi }}</td>
                                 <td class="align-middle">{{ $item->flag_pindah }}</td>

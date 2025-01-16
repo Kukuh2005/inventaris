@@ -52,7 +52,7 @@
         </div>
     </section>
 </div>
-@include('laporan.view')
+@include('pengadaan.view')
 @include('laporan.pdf_form')
 @endsection
 
