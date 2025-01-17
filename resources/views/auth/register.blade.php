@@ -10,129 +10,103 @@
     <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
 
-    <!-- Custom CSS -->
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #89f7fe, #66a6ff);
-            color: #333;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="assets/modules/jquery-selectric/selectric.css">
 
-        .card {
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-header {
-            background: #6c63ff;
-            color: white;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            padding: 20px;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-        }
-
-        .btn-primary {
-            background: #6c63ff;
-            border: none;
-            border-radius: 20px;
-            padding: 12px 20px;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-
-        .text-muted a {
-            color: #6c63ff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .text-muted a:hover {
-            text-decoration: underline;
-        }
-
-        .simple-footer {
-            text-align: center;
-            margin-top: 20px;
-            color: white;
-        }
-    </style>
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Register</div>
-                    <div class="card-body">
-                        <form method="POST" action="/register/store">
-                            @csrf
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="frist_name">Nama</label>
-                                    <input id="frist_name" type="text" class="form-control" name="name" autofocus required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="email">Email</label>
-                                    <input id="email" type="email" class="form-control" name="email" required>
-                                    <div class="invalid-feedback">
-                                        Please enter a valid email
-                                    </div>
-                                </div>
+    <div id="app">
+        <section class="section">
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+                        <!-- <div class="login-brand">
+                            <img src="assets/img/stisla-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle">
+                        </div> -->
+
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h4>Register</h4>
                             </div>
 
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="password">Password</label>
-                                    <input id="password" type="password" class="form-control" name="password" required>
-                                    <div class="invalid-feedback">
-                                        Please enter your password
+                            <div class="card-body">
+                                <form method="POST" action="/register/store">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="name">Name</label>
+                                                <input id="name" type="text" class="form-control" name="name" required autofocus>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input id="email" type="email" class="form-control" name="email" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="password">Password</label>
+                                                <input id="password" type="password" class="form-control" name="password" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="password2">Confirm Password</label>
+                                                <input id="password2" type="password" class="form-control" name="password_confirm" required>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                            Register
+                                        </button>
                                     </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="password2">Konfirmasi Password</label>
-                                    <input id="password2" type="password" class="form-control" name="password_confirm" required>
-                                </div>
+                                </form>
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block">Register</button>
-                            </div>
-                        </form>
                         <div class="mt-4 text-muted text-center">
                             Sudah punya akun? <a href="/login">Login</a>
                         </div>
+                        
+                        <div class="simple-footer">
+                            Copyright &copy; Kukuh Wisanggeni 2025
+                        </div>
                     </div>
                 </div>
-                <div class="simple-footer">
-                    Copyright &copy; Kukuh Wisanggeni 2025
-                </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <!-- General JS Scripts -->
     <script src="assets/modules/jquery.min.js"></script>
     <script src="assets/modules/popper.js"></script>
+    <script src="assets/modules/tooltip.js"></script>
     <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
     <script src="assets/modules/moment.min.js"></script>
     <script src="assets/js/stisla.js"></script>
 
+    <!-- JS Libraries -->
+    <script src="assets/modules/jquery-pwstrength/jquery.pwstrength.min.js"></script>
+    <script src="assets/modules/jquery-selectric/jquery.selectric.min.js"></script>
+
+    <!-- Page Specific JS File -->
+    <script src="assets/js/page/auth-register.js"></script>
+    <script src="{{asset('assets/js/page/modules-sweetalert.js')}}"></script>
+    <script src="{{asset('assets/modules/sweetalert/sweetalert.min.js')}}"></script>
+    <script src="{{asset('assets/js/page/modules-sweetalert.js')}}"></script>
+
     <!-- Template JS File -->
     <script src="assets/js/scripts.js"></script>
     <script src="assets/js/custom.js"></script>
-
+    
     @if(session('gagal'))
     <script>
         $(function () {
@@ -140,7 +114,7 @@
                 title: 'Failed',
                 text: "{{ session('gagal') }}",
                 icon: 'warning',
-                buttons: true,
+                button: true,
             });
         });
     </script>

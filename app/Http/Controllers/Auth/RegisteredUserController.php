@@ -29,16 +29,16 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $cek_email = User::where('email', $request->email)->exists();
+        
+        if($cek_email){
+            return back()->with('gagal', 'Email Sudah Terdaftar.');
+
+        }
+        
         if($request->password !== $request->password_confirm){
             return back()->with('gagal', 'Konfirmasi password tidak sesuai.');      
         }
-
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required'],
-            // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
 
         $role = $this->cekEmail($request->email);
         
