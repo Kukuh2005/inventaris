@@ -80,6 +80,8 @@ Route::middleware(['auth', 'adminMiddleware'])->group(function(){
     Route::get('/admin/mutasi-lokasi', [MutasiLokasiController::class, 'index']);
     Route::post('/admin/mutasi-lokasi/store', [MutasiLokasiController::class, 'store']);
     Route::put('/admin/mutasi-lokasi/{encrypted_id}/update', [MutasiLokasiController::class, 'update']);
+    Route::get('/admin/mutasi-lokasi/{tahun}/{bulan}/print', [MutasiLokasiController::class, 'printBulan']);
+    Route::get('/admin/mutasi-lokasi/{encrypted_id}/pdf', [MutasiLokasiController::class, 'printMutasi']);
     
     Route::get('/admin/hitung-depresiasi', [HitungDepresiasiController::class, 'index']);
     Route::get('/admin/hitung-depresiasi/{bulan_req}', [HitungDepresiasiController::class, 'get_bulan']);

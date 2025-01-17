@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Opname</title>
+    <title>Laporan Mutasi Lokasi</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <style>
         body {
@@ -111,46 +111,48 @@
         <div class="header">
             <h4>INVENTARIS</h4>
             <div class="invoice-info">
-                <h5>Laporan Opname</h5>
-                <p>Tanggal Cetak: {{ \Carbon\Carbon::parse($opname->tgl_pengadaan)->format('d F Y') }}</p>
+                <h5>Laporan Mutasi Lokasi</h5>
+                <p>Tanggal Cetak: {{ date('d M Y') }}</p>
             </div>
         </div>
 
-        <!-- Info Penjual dan Pembeli -->
-        <div class="section-title">Informasi Opname</div>
+        <!-- Informasi Pengadaan -->
+        <div class="section-title">Informasi Mutasi Lokasi</div>
         <table class="info-table" style="width: 100%;">
             <tr>
-                <td style="font-weight: bold; width: 30%">Periode Opname</td>
-                <td style="width: 70%">: {{ \Carbon\Carbon::parse($opname->first()->tgl_opname ?? now())->format('F Y') }}</td>
+                <td style="font-weight: bold; width: 30%">Periode Mutasi Lokasi</td>
+                <td style="width: 70%">: {{ \Carbon\Carbon::parse($mutasi->first()->tgl_mutasi ?? now())->format('F Y') }}</td>
             </tr>
             <tr>
                 <td style="font-weight: bold;">Jumlah Barang</td>
-                <td>: {{ $opname->jumlah }} Unit</td>
+                <td>: {{ $mutasi->sum('jumlah') }} Unit</td>
             </tr>
         </table>
 
-        <!-- Info Produk -->
-        <div class="section-title">Detail Produk</div>
+        <!-- Detail Pengadaan -->
+        <div class="section-title">Detail Mutasi Lokasi</div>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Tanggal</th>
-                    <th>Kode</th>
                     <th>Barang</th>
                     <th>Jumlah</th>
-                    <th>Kondisi</th>
-                    <th>Keterangan</th>
+                    <th>Lokasi</th>
+                    <th>Flag Lokasi</th>
+                    <th>Flag Pindah</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($mutasi as $item)
                 <tr>
-                    <td>{{ $opname->tgl_opname }}</td>
-                    <td>{{ $opname->pengadaan->kode_pengadaan }}</td>
-                    <td>{{ $opname->pengadaan->masterBarang->nama_barang }}</td>
-                    <td>{{ $opname->jumlah }}</td>
-                    <td>{{ $opname->kondisi }}</td>
-                    <td>{{ $opname->keterangan }}</td>
+                    <td>{{ $item->tgl_mutasi }}</td>
+                    <td>{{$item->pengadaan->kode_pengadaan}} <br> {{ $item->pengadaan->masterBarang->nama_barang }}</td>
+                    <td>{{ $item->jumlah }}</td>
+                    <td>{{ $item->lokasi->nama_lokasi }}</td>
+                    <td>{{ $item->flag_lokasi }}</td>
+                    <td>{{ $item->flag_pindah }}</td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
 

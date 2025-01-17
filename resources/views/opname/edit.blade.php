@@ -13,7 +13,7 @@
                     <div class="form-group">
                       <label>Barang</label>
                       <select name="id_pengadaan" class="form-control" id="" readonly>
-                        <option value="{{$item->pengadaan->id}}">{{$item->pengadaan->masterBarang->nama_barang}}</option>
+                        <option value="{{$item->pengadaan->id}}">{{$item->pengadaan->kode_pengadaan}} - {{$item->pengadaan->masterBarang->nama_barang}}</option>
                       </select>
                     </div>
                     <div class="row">

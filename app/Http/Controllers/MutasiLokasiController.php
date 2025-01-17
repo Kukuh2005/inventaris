@@ -8,6 +8,9 @@ use App\Models\Lokasi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MutasiLokasiController extends Controller
 {
@@ -16,18 +19,26 @@ class MutasiLokasiController extends Controller
      */
     public function index()
     {
-        $mutasi_lokasi = MutasiLokasi::all()->map(function($item){
+        $now = Carbon::now();
+        $tahun_sekarang = $now->year;
+        $bulan = $now->month;
+
+        $mutasi_lokasi = MutasiLokasi::orderBy('tgl_mutasi', 'desc')
+        ->get()
+        ->map(function($item){
             $item->encrypted_id = Crypt::encryptString($item->id);
             return $item;
         });
-        $pengadaan = Pengadaan::select('id_master_barang')
+        $pengadaan = Pengadaan::all();
+
+        $tahun = Pengadaan::select(DB::raw('YEAR(tgl_pengadaan) as tahun'))
         ->distinct()
-        ->with('masterBarang')
-        ->get();
+        ->orderBy('tahun', 'asc')
+        ->pluck('tahun');
 
         $lokasi = Lokasi::all();
 
-        return view('mutasiLokasi.index', compact('mutasi_lokasi', 'pengadaan', 'lokasi'));
+        return view('mutasiLokasi.index', compact('mutasi_lokasi', 'pengadaan', 'lokasi', 'tahun', 'tahun_sekarang', 'bulan'));
     }
 
     /**
@@ -45,6 +56,7 @@ class MutasiLokasiController extends Controller
     {
         $mutasi_lokasi = new MutasiLokasi;
         $mutasi_lokasi->id_pengadaan = $request->id_pengadaan;
+        $mutasi_lokasi->jumlah = $request->jumlah;
         $mutasi_lokasi->id_lokasi = $request->id_lokasi;
         $mutasi_lokasi->tgl_mutasi = $request->tgl_mutasi;
         $mutasi_lokasi->flag_lokasi = $request->flag_lokasi;
@@ -52,6 +64,28 @@ class MutasiLokasiController extends Controller
         $mutasi_lokasi->save();
         
         return back()->with('sukses', 'Berhasil Tambah Data');
+    }
+
+    public function printBulan($tahun, $bulan)
+    {
+        $mutasi = MutasiLokasi::whereYear('tgl_mutasi', $tahun)->whereMonth('tgl_mutasi', $bulan)->get();
+        
+        if($mutasi->count() == 0){
+            return abort(403, 'Data Kosong');
+        }
+
+        $pdf = Pdf::loadView('mutasiLokasi.printBulan', compact('mutasi'));
+        return $pdf->stream();
+    }
+
+    public function printMutasi($encrypted_id)
+    {
+        $id = Crypt::decryptString($encrypted_id);
+
+        $mutasi = MutasiLokasi::findOrFail($id);
+
+        $pdf = Pdf::loadView('mutasiLokasi.print', compact('mutasi'));
+        return $pdf->stream();
     }
 
     /**
@@ -78,7 +112,7 @@ class MutasiLokasiController extends Controller
         $id = Crypt::decryptString($encrypted_id);
 
         $mutasi_lokasi = MutasiLokasi::findOrFail($id);
-        $mutasi_lokasi->id_pengadaan = $request->id_pengadaan;
+        $mutasi_lokasi->jumlah = $request->jumlah;
         $mutasi_lokasi->id_lokasi = $request->id_lokasi;
         $mutasi_lokasi->tgl_mutasi = $request->tgl_mutasi;
         $mutasi_lokasi->flag_lokasi = $request->flag_lokasi;

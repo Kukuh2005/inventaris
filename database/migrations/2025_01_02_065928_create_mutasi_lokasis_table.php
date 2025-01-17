@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('id_lokasi');
             $table->integer('id_pengadaan');
             $table->date('tgl_mutasi');
+            $table->integer('jumlah');
             $table->string('flag_lokasi', 45);
             $table->string('flag_pindah', 45);  
             $table->timestamps();

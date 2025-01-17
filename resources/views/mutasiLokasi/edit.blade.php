@@ -15,11 +15,11 @@
                     <div class="form-group">
                         <label>Barang</label>
                         <select class="form-control" name="id_pengadaan" disabled>
-                            <option value="{{$item->pengadaan->id}}">{{$item->pengadaan->masterBarang->nama_barang}}</option>
+                            <option value="{{$item->pengadaan->id}}">{{$item->pengadaan->kode_pengadaan}} - {{$item->pengadaan->masterBarang->nama_barang}}</option>
                         </select>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label>Lokasi</label>
                             <select class="form-control" name="id_lokasi">
                                 <option value="">Pilih Lokasi...</option>
@@ -30,7 +30,11 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
+                            <label>Jumlah</label>
+                            <input type="number" class="form-control" name="jumlah" min="1" value="{{$item->jumlah}}">
+                        </div>
+                        <div class="form-group col-md-4">
                             <label>Tanggal Mutasi</label>
                             <input type="date" class="form-control" name="tgl_mutasi" value="{{ $item->tgl_mutasi }}" min="{{$item->pengadaan->tgl_pengadaan}}">
                         </div>

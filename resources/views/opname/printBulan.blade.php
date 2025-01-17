@@ -145,7 +145,7 @@
                 @foreach ($opname as $item)
                 <tr>
                     <td>{{ $item->tgl_opname }}</td>
-                    <td>{{ $item->pengadaan->masterBarang->nama_barang }}</td>
+                    <td>{{$item->pengadaan->kode_pengadaan}} <br> {{ $item->pengadaan->masterBarang->nama_barang }}</td>
                     <td>{{ $item->jumlah }}</td>
                     <td>{{ $item->kondisi }}</td>
                     <td>{{ $item->keterangan }}</td>

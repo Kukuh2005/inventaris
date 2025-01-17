@@ -36,7 +36,7 @@
                             <tr>
                                 <td class="align-middle" scope="row">{{$loop->iteration}}</th>
                                 <td class="align-middle">{{$item->tgl_opname}}</td>
-                                <td class="align-middle">{{$item->pengadaan->masterBarang->nama_barang}}</td>
+                                <td class="align-middle">{{$item->pengadaan->kode_pengadaan}} <br> {{$item->pengadaan->masterBarang->nama_barang}}</td>
                                 <td class="align-middle">{{$item->jumlah}}</td>
                                 <td class="align-middle">{{$item->kondisi}}</td>
                                 <td class="align-middle">{{$item->keterangan}}</td>

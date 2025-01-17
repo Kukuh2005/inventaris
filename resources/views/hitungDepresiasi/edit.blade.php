@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <label>Barang</label>
                         <select class="form-control" name="id_pengadaan" readonly>
-                            <option value="{{$item->pengadaan->id}}">{{$item->pengadaan->kode_pengadaan}}</option>
+                            <option value="{{$item->pengadaan->id}}">{{$item->pengadaan->kode_pengadaan}} - {{$item->pengadaan->masterBarang->nama_barang}}</option>
                         </select>
                     </div>
                     <div class="row">

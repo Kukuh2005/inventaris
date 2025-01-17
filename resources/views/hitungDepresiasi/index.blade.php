@@ -52,7 +52,7 @@
                             <tr>
                                 <td class="align-middle" scope="row">{{ $loop->iteration }}</td>
                                 <td class="align-middle">{{ $item->tgl_hitung_depresiasi }}</td>
-                                <td class="align-middle">{{ $item->pengadaan->masterBarang->nama_barang ?? 'Tidak Ditemukan' }}</td>
+                                <td class="align-middle">{{$item->pengadaan->kode_pengadaan}} <br> {{ $item->pengadaan->masterBarang->nama_barang ?? 'Tidak Ditemukan' }}</td>
                                 <td class="align-middle">{{ $item->durasi }} Bulan</td>
                                 <td class="align-middle">{{ number_format($item->nilai_barang, 0, ',', '.') }}</td>
                                 <td class="align-middle">

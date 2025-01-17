@@ -28,10 +28,8 @@ class OpnameController extends Controller
             $item->encrypted_id = Crypt::encryptString($item->id);
             return $item;
         });        
-        $pengadaan = Pengadaan::select('id_master_barang')
-        ->distinct()
-        ->with('masterBarang')
-        ->get();
+        
+        $pengadaan = Pengadaan::all();
 
         $tahun = Pengadaan::select(DB::raw('YEAR(tgl_pengadaan) as tahun'))
         ->distinct()

@@ -15,7 +15,7 @@
                         <select class="form-control" name="id_pengadaan" required>
                             <option value="">Pilih Barang...</option>
                             @foreach($pengadaan as $barang)
-                                <option value="{{ $barang->id_master_barang }}">{{ $barang->masterBarang->nama_barang }}</option>
+                                <option value="{{ $barang->id_master_barang }}">{{$barang->kode_pengadaan}} - {{ $barang->masterBarang->nama_barang }}</option>
                             @endforeach
                         </select>
                     </div>
