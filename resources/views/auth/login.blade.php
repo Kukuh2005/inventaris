@@ -69,7 +69,7 @@
               </div>
             </div>
             <div class="mt-5 text-muted text-center">
-              Belum Punya Akun? <a href="auth-register.html">Register</a>
+              Belum Punya Akun? <a href="/register">Register</a>
             </div>
             <div class="simple-footer">
               Copyright &copy; Kukuh Wisanggeni 2025
