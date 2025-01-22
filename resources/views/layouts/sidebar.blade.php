@@ -11,6 +11,7 @@
             <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/dashboard') ? 'active' : '' ?>">
                 <a href="/{{auth()->user()->role}}/dashboard" class="nav-link"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>                                
             </li>
+            @if(auth()->user()->role == 'admin')
             <li class="menu-header">Master Data</li>
             <li class="dropdown <?= (in_array($_SERVER['REQUEST_URI'], [
                 '/' . auth()->user()->role . '/master-barang',
@@ -50,25 +51,29 @@
                     </li>
                 </ul>
             </li>
+            @endif
             <li class="menu-header">Transaksi</li>
             <li class="dropdown <?= (in_array($_SERVER['REQUEST_URI'], [
                 '/' . auth()->user()->role . '/pengadaan',
                 '/' . auth()->user()->role . '/mutasi-lokasi',
                 '/' . auth()->user()->role . '/hitung-depresiasi'
-            ])) ? 'active' : '' ?>">
+                ])) ? 'active' : '' ?>">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-shopping-cart"></i><span>Transaksi</span></a>
                 <ul class="dropdown-menu">
                     <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/pengadaan') ? 'active' : '' ?>">
                         <a class="nav-link" href="/{{auth()->user()->role}}/pengadaan">Pengadaan</a>
                     </li>
+                    @if(auth()->user()->role == 'admin')
                     <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/mutasi-lokasi') ? 'active' : '' ?>">
                         <a class="nav-link" href="/{{auth()->user()->role}}/mutasi-lokasi">Mutasi Lokasi</a>
                     </li>
+                    @endif
                     <li class="<?= ($_SERVER['REQUEST_URI'] == '/' . auth()->user()->role . '/hitung-depresiasi') ? 'active' : '' ?>">
                         <a class="nav-link" href="/{{auth()->user()->role}}/hitung-depresiasi">Hitung Depresiasi</a>
                     </li>
                 </ul>
             </li>
+            @if(auth()->user()->role == 'admin')
             <li class="menu-header">Opname & Laporan</li>
             <li class="dropdown <?= (in_array($_SERVER['REQUEST_URI'], [
                 '/' . auth()->user()->role . '/opname',
@@ -84,6 +89,7 @@
                     </li>                    
                 </ul>
             </li>
+            @endif
         </ul>
     </aside>
 </div>

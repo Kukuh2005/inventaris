@@ -76,7 +76,7 @@
                         </div>
                         
                         <div class="simple-footer">
-                            Copyright &copy; Kukuh Wisanggeni 2025
+                            Copyright &copy; Footer 2025
                         </div>
                     </div>
                 </div>

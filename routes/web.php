@@ -23,16 +23,16 @@ use App\Http\Controllers\OpnameController;
 use App\Http\Controllers\LaporanController;
 
 
-Route::get('/', [AuthenticatedSessionController::class, 'landing']);
+Route::get('/', [AuthenticatedSessionController::class, 'create']);
 Route::get('/login', [AuthenticatedSessionController::class, 'create']);
 Route::get('/logout', [AuthenticatedSessionController::class, 'logout']);
 Route::post('/postlogin', [AuthenticatedSessionController::class, 'postlogin']);
 Route::get('/register', [RegisteredUserController::class, 'create']);
 Route::post('/register/store', [RegisteredUserController::class, 'store']);
 
-Route::middleware(['auth', 'adminMiddleware'])->group(function(){
+Route::middleware(['auth', 'adminMiddleware:admin'])->group(function(){
     Route::get('/admin/dashboard', [DashboardController::class, 'index']);
-
+    
     Route::get('/admin/master-barang', [MasterBarangController::class, 'index']);
     Route::post('/admin/master-barang/store', [MasterBarangController::class, 'store']);
     Route::put('/admin/master-barang/{encrypted_id}/update', [MasterBarangController::class, 'update']);
@@ -62,16 +62,16 @@ Route::middleware(['auth', 'adminMiddleware'])->group(function(){
     Route::post('/admin/lokasi/store', [LokasiController::class, 'store']);
     Route::put('/admin/lokasi/{encrypted_id}/update', [LokasiController::class, 'update']);
     Route::get('/admin/lokasi/{encrypted_id}/delete', [LokasiController::class, 'destroy']);
-
+    
     Route::get('/admin/distributor', [DistributorController::class, 'index']);
     Route::post('/admin/distributor/store', [DistributorController::class, 'store']);
     Route::put('/admin/distributor/{encrypted_id}/update', [DistributorController::class, 'update']);
     Route::get('/admin/distributor/{encrypted_id}/delete', [DistributorController::class, 'destroy']);
-
+    
     Route::get('/admin/pengadaan', [PengadaanController::class, 'index']);
     Route::post('/admin/pengadaan/store', [PengadaanController::class, 'store']);
     Route::put('/admin/pengadaan/{encrypted_id}/update', [PengadaanController::class, 'update']);
-
+    
     Route::get('/admin/depresiasi', [DepresiasiController::class, 'index']);
     Route::post('/admin/depresiasi/store', [DepresiasiController::class, 'store']);
     Route::put('/admin/depresiasi/{encrypted_id}/update', [DepresiasiController::class, 'update']);
@@ -88,7 +88,7 @@ Route::middleware(['auth', 'adminMiddleware'])->group(function(){
     Route::post('/admin/hitung-depresiasi/store', [HitungDepresiasiController::class, 'store']);
     Route::post('/admin/hitung-depresiasi/all', [HitungDepresiasiController::class, 'keseluruhan']);
     Route::put('/admin/hitung-depresiasi/{encrypted_id}/update', [HitungDepresiasiController::class, 'update']);
-
+    
     Route::get('/admin/opname', [OpnameController::class, 'index']);
     Route::post('/admin/opname/store', [OpnameController::class, 'store']);
     Route::put('/admin/opname/{encrypted_id}/update', [OpnameController::class, 'update']);
@@ -100,7 +100,20 @@ Route::middleware(['auth', 'adminMiddleware'])->group(function(){
     Route::get('/admin/laporan/{tahun}/{bulan}/print', [LaporanController::class, 'printBulan']);
 });
 
+Route::middleware(['auth', 'stafMiddleware:staf'])->group(function(){
+    Route::get('/staf/dashboard', [DashboardController::class, 'index']);
 
+    Route::get('/staf/pengadaan', [PengadaanController::class, 'index']);
+    Route::post('/staf/pengadaan/store', [PengadaanController::class, 'store']);
+    Route::put('/staf/pengadaan/{encrypted_id}/update', [PengadaanController::class, 'update']);
+
+    Route::get('/staf/hitung-depresiasi', [HitungDepresiasiController::class, 'index']);
+    Route::get('/staf/hitung-depresiasi/{bulan_req}', [HitungDepresiasiController::class, 'get_bulan']);
+    Route::post('/staf/hitung-depresiasi/store', [HitungDepresiasiController::class, 'store']);
+    Route::post('/staf/hitung-depresiasi/all', [HitungDepresiasiController::class, 'keseluruhan']);
+    Route::put('/staf/hitung-depresiasi/{encrypted_id}/update', [HitungDepresiasiController::class, 'update']);
+    
+});
 
 
 

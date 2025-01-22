@@ -72,7 +72,7 @@
               Belum Punya Akun? <a href="/register">Register</a>
             </div>
             <div class="simple-footer">
-              Copyright &copy; Kukuh Wisanggeni 2025
+              Copyright &copy; Footer 2025
             </div>
           </div>
         </div>

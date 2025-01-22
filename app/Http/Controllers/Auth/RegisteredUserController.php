@@ -61,12 +61,7 @@ class RegisteredUserController extends Controller
         if(strpos($email, '@admin.com') !== false)
         {
             return 'admin';
-        }
-        elseif(strpos($email, '@pimpinan.com') !== false)
-        {
-            return 'pimpinan';
-        }
-        else{
+        }else{
             return 'staf';
         }
     }
