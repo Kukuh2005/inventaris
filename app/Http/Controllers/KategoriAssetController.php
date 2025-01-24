@@ -54,7 +54,7 @@ class KategoriAssetController extends Controller
     public function store(Request $request)
     {
         $kategoriAsset = new KategoriAsset;
-        $kategoriAsset->kode_kategori_asset = $request->kode_kategori_asset;
+        $kategoriAsset->kode_kategori_asset = $this->generateKode();
         $kategoriAsset->kategori_asset  = $request->kategori_asset;
         $kategoriAsset->save();
 
