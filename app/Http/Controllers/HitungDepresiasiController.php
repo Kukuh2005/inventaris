@@ -86,7 +86,11 @@ class HitungDepresiasiController extends Controller
         $hitungDepresiasi->tgl_hitung_depresiasi = $request->tgl_hitung_depresiasi;
         $hitungDepresiasi->bulan = $tanggal_depresiasi_now->month;
         $hitungDepresiasi->durasi = $durasi;
-        $hitungDepresiasi->nilai_barang = $nilai_depresiasi;
+        if($nilai_depresiasi < 0){
+            $hitungDepresiasi->nilai_barang = 0;//jika nilai depresiasi minus, akan menyimpan nilai 0
+        }else{
+            $hitungDepresiasi->nilai_barang = $nilai_depresiasi;
+        }
         $hitungDepresiasi->save();
 
         return redirect('/' . auth()->user()->role . '/hitung-depresiasi' . '/' . $tanggal_depresiasi_now->month)->with('sukses', 'Berhasil Hitung Depresiasi');
